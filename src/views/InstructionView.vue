@@ -1,11 +1,9 @@
 <script>
-import AboutMeSection from '@/components/AboutMeSection.vue';
 import InformationAndDescriptionCards from '@/components/InformationAndDescriptionCards.vue'
 
 export default {
   components: {
     InformationAndDescriptionCards,
-    AboutMeSection
 },
   data() {
     return {
@@ -46,6 +44,5 @@ export default {
 </script>
 
 <template>
-  <InformationAndDescriptionCards :content="dataArray" />
-  <AboutMeSection/>
+    <InformationAndDescriptionCards :content="dataArray" />
 </template>
