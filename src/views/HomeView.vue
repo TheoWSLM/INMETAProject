@@ -1,6 +1,7 @@
 
 
 <template>
+  <BannerSection/>
   <InformationAndDescriptionCards :content="dataArray" />
   <AdvantagesCallToAction />
   </template>
@@ -9,11 +10,13 @@
 <script >
 import InformationAndDescriptionCards from '@/components/sectionItems/InformationAndDescriptionCards.vue';
 import AdvantagesCallToAction from '@/components/sections/AdvantagesCallToAction.vue';
+import BannerSection from '@/components/sections/BannerSection.vue';
 
 export default{
 components:{
     AdvantagesCallToAction,
-    InformationAndDescriptionCards
+    InformationAndDescriptionCards,
+    BannerSection
 },
 data() {
     return {

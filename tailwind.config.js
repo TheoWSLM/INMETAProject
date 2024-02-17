@@ -7,10 +7,13 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js"
-  ],
-  theme: {
-    extend: {},
+  ], theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+    },
   },
-  plugins: [ Flowbite],
+  plugins: [ Flowbite ],
 }
 
