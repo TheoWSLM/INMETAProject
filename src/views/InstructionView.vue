@@ -1,10 +1,10 @@
 <script>
-import InformationAndDescriptionCards from '@/components/InformationAndDescriptionCards.vue'
+import InformationAndDescriptionCards from '../components/sectionItems/InformationAndDescriptionCards.vue'
 
 export default {
   components: {
-    InformationAndDescriptionCards,
-},
+    InformationAndDescriptionCards
+  },
   data() {
     return {
       dataArray: [
@@ -44,5 +44,5 @@ export default {
 </script>
 
 <template>
-    <InformationAndDescriptionCards :content="dataArray" />
+  <InformationAndDescriptionCards :content="dataArray" />
 </template>

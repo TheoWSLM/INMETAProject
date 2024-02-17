@@ -1,12 +1,12 @@
 <script>
-import AboutMeSection from '@/components/AboutMeSection.vue';
-import InformationAndDescriptionCards from '@/components/InformationAndDescriptionCards.vue'
+import AboutMeSection from '@/components/sections/AboutMeSection.vue'
+import InformationAndDescriptionCards from '@/components/sectionItems/InformationAndDescriptionCards.vue'
 
 export default {
   components: {
     InformationAndDescriptionCards,
     AboutMeSection
-},
+  },
   data() {
     return {
       dataArray: [
@@ -46,6 +46,6 @@ export default {
 </script>
 
 <template>
+  <AboutMeSection />
   <InformationAndDescriptionCards :content="dataArray" />
-  <AboutMeSection/>
 </template>
