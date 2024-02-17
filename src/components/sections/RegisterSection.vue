@@ -36,6 +36,7 @@ export default{
     {validator: name => name.trim() !== '', message: 'Nome é obrigatório'} 
   ],
   email: [
+  {validator: email => email.trim() !== '', message: 'Email é obrigatório'},
     { validator: email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), message: 'Formato de email inválido' },
     { validator: email => email.length <= 50, message: 'Email muito longo' }
   ],
