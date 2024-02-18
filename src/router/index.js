@@ -3,7 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import InstructionView from '../views/InstructionView.vue'
 import RegisterView from '@/views/RegisterView.vue'
-import MyCardsViewVue from '@/views/MyCardsView.vue'
+import MyCardsView from '@/views/MyCardsView.vue'
+import TradeView from '@/views/TradeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,8 +32,13 @@ const router = createRouter({
     {
       path: '/cards',
       name: 'cards',
-      component: MyCardsViewVue
-    }
+      component: MyCardsView
+    },
+    {
+      path: '/trades',
+      name: 'trades',
+      component: TradeView
+    },
   ]
 })
 

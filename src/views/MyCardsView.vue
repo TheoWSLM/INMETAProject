@@ -12,9 +12,8 @@ export default {
     return {
       data: [
         {
-          title: 'Suas cartas',
+          title: 'Minhas cartas',
           description: 'Descrição do conteúdo.',
-          descriptionButton: 'Saiba mais',
           cards: [
             {
               title: 'Título do Card 1',

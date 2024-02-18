@@ -10,10 +10,11 @@
         </div>
         <RouterLink
           to="/register"
-          class="text-white bg-gray-400 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-300"
         >
           Registrar
         </RouterLink>
+        
         <button
           data-collapse-toggle="navbar-cta"
           type="button"
@@ -49,29 +50,41 @@
           <li>
             <RouterLink
               to="/"
-              class="block py-2 px-3 md:p-0 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-              aria-current="page"
-              >Inicio</RouterLink
+              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              :class="{'text-purple-700': $route.path === '/'}"
+              >Início</RouterLink
+            >
+          </li>
+          <li>
+            <RouterLink
+              to="/trades"
+              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              :class="{'text-purple-700': $route.path === '/trades'}"
+              >Trocas</RouterLink
             >
           </li>
           <li>
             <RouterLink
               to="/cards"
-              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Cartas</RouterLink
+              aria-current="page"
+              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              :class="{'text-purple-700': $route.path === '/cards'}"
+              >Minhas Cartas</RouterLink
             >
           </li>
           <li>
             <RouterLink
               to="/how-it-works"
-              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Como funciona?</RouterLink
+              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              :class="{'text-purple-700': $route.path === '/how-it-works'}"
+              >Como funciona</RouterLink
             >
           </li>
           <li>
             <RouterLink
               to="/about"
-              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+              :class="{'text-purple-700': $route.path === '/about'}"
               >Sobre</RouterLink
             >
           </li>
