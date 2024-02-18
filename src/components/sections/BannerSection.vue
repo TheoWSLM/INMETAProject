@@ -2,8 +2,8 @@
     <div class="flex w-full mt-8 items-center justify-between mx-auto">
         <div class="w-5/12 mx-auto">
           <TitleAndDescription
-            title="Título provisório"
-            description="Descrição provisória descrição provisória descrição provisóriadescrição provisóriadescrição provisóriadescrição provisóriadescrição provisóriadescrição provisória."
+            title="Troque, jogue e vença!"
+            description="Junte-se a nossa solução inovadora para expandir sua variedade de cartas de yugioh!."
             buttonText="botão provisório"
           />
         </div>
