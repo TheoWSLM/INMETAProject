@@ -57,19 +57,18 @@
           </li>
           <li>
             <RouterLink
-              to="/trades"
+              to="/cards"
               class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              :class="{'text-purple-700': $route.path === '/trades'}"
-              >Trocas</RouterLink
+              :class="{'text-purple-700': $route.path === '/cards'}"
+              >Cartas</RouterLink
             >
           </li>
           <li>
             <RouterLink
-              to="/cards"
-              aria-current="page"
+              to="/trades"
               class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:dark:hover:text-purple-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              :class="{'text-purple-700': $route.path === '/cards'}"
-              >Minhas Cartas</RouterLink
+              :class="{'text-purple-700': $route.path === '/trades'}"
+              >Trocas</RouterLink
             >
           </li>
           <li>

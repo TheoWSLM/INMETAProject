@@ -18,4 +18,36 @@ export default {
         />
       </div>
     </div>
+
+<ol class="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse">
+  <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse">
+        <span class="flex items-center justify-center w-8 h-8 border border-purple-700 rounded-full shrink-0 dark:border-purple-700">
+            1
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Registre-se</h3>
+            <p class="text-sm">Crie um usuário inserindo email, nome e senha</p>
+        </span>
+    </li>
+    <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse">
+      <span class="flex items-center justify-center w-8 h-8 border border-purple-700 rounded-full shrink-0 dark:border-purple-700">
+            2
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Crie uma solicitação de troca</h3>
+            <p class="text-sm">Vá em minhas trocas e clique em botao e faça isso e aquilo</p>
+        </span>
+    </li>
+    <li class="flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse">
+      <span class="flex items-center justify-center w-8 h-8 border border-purple-700 rounded-full shrink-0 dark:border-purple-700">
+            3
+        </span>
+        <span>
+            <h3 class="font-medium leading-tight">Navegue pelas cartas disponíveis no sistema</h3>
+            <p class="text-sm">Vá em cartas e veja todas as cartas disponíveis no sistema para adicionar à sua conta e trocar</p>
+        </span>
+    </li>
+</ol>
+
+
   </template>

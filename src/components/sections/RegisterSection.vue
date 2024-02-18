@@ -1,10 +1,10 @@
 <template>
   <div class="flex mt-16">
-    <div class="w-5/12 mx-16">
+    <div class="w-4/12 mx-16">
       <TitleAndDescription
-        title="Título provisório"
-        description="Descrição provisória descrição provisória descrição provisóriadescrição provisóriadescrição provisóriadescrição provisóriadescrição provisóriadescrição provisória."
-        buttonText="botão provisório"
+        title="Comece a trocar suas cartas hoje"
+        description="Se registre agora e comece a desfrutar da emoção de trocar cartas de Yu-Gi-Oh com outros entusiastas como você. É fácil, é divertido e é tudo parte da experiência YuGiCards!"
+        buttonText=""
       />
     </div>
     <div class="w-3/12 mt-14 mx-20">

@@ -1,6 +1,6 @@
 <template>
-  <div class="flex w-full mt-8 items-center justify-between mx-auto">
-    <div class="w-5/12 mx-auto">
+  <div class="flex w-full mt-20 items-center justify-between mx-auto">
+    <div class="w-4/12 mx-auto">
       <TitleAndDescription class="text-start whitespace-pre-line"
         title="Encontre o card que procura e complete 
         seu deck"
