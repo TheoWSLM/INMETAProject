@@ -1,15 +1,13 @@
-
 <script>
-import RegisterSection from '@/components/sections/RegisterSection.vue';
+import RegisterSection from '@/components/sections/RegisterSection.vue'
 
-export default{
-    components:{
-        RegisterSection
-    }
+export default {
+  components: {
+    RegisterSection
+  }
 }
-
 </script>
 
 <template>
-    <RegisterSection/>
+  <RegisterSection />
 </template>

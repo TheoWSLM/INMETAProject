@@ -1,5 +1,4 @@
 <template>
-    
   <div class="flex w-full mt-8 items-center justify-between mx-auto">
     <div class="mx-auto">
       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="w-72 h-auto">
@@ -11,22 +10,25 @@
     </div>
 
     <div class="w-5/12 pr-10 mx-auto">
-      <TitleAndDescription
-        title="Título provisório"
-        description="Descrição provisória descrição provisória descrição provisóriadescrição provisóriadescrição provisóriadescrição provisóriadescrição provisóriadescrição provisória."
-        buttonText="botão provisório"
+      <TitleAndDescription class="text-start whitespace-pre-line"
+        title="Troque cards facilmente
+        com o YuGiCards"
+        description="• Ampla Seleção de Cartas
+        • Atualizações contínuas
+        • Trocas simplificadas
+        • Comunidade Engajada"
+        buttonText="Trocar agora"
       />
     </div>
   </div>
-
 </template>
 
 <script>
 import TitleAndDescription from '../sectionItems/TitleAndDescription.vue'
 
-export default{
-    components:{
-        TitleAndDescription
-    }
+export default {
+  components: {
+    TitleAndDescription
+  }
 }
 </script>
