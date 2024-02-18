@@ -8,7 +8,7 @@
 
 
 <script >
-import TradeList from '@/components/sectionItems/TradeList.vue';
+import TradeList from '@/components/sections/TradeListSection.vue';
 import AdvantagesCallToAction from '@/components/sections/AdvantagesCallToAction.vue';
 import BannerSection from '@/components/sections/BannerSection.vue';
 
@@ -16,7 +16,7 @@ export default{
 components:{
     AdvantagesCallToAction,
     TradeList,
-    BannerSection
+    BannerSection,
 },
 data() {
     return {
@@ -29,43 +29,54 @@ data() {
             'Saber mais',
           trades: [
             {
-              title: 'How to quickly deploy a static website',
-              description:
-                'A Shattered, Colorless Realm',
-              button: ''
+              title1: 'A Shattered, Colorless Realm1',
+              description1:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+                title2: 'A Shattered, Colorless Realm1',
+                description2:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+              
             },
             {
-              title: 'Start with Flowbite Design System',
-              description:
-                'A Shattered, Colorless Realm',
-              button: ''
-            },
+              title1: 'A Shattered, Colorless Realm1',
+              description1:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+                title2: 'A Shattered, Colorless Realm1',
+                description2:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+             },
             {
-              title: 'Best react libraries around the web',
-              description:
-                'A Shattered, Colorless Realm',
-              button: ''
-            },
+              title1: 'A Shattered, Colorless Realm1',
+              description1:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+                title2: 'A Shattered, Colorless Realm1',
+                description2:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+             },
             {
-              title: 'How to quickly deploy a static website',
-              description:
-                'A Shattered, Colorless Realm',
-              button: ''
-            },
+              title1: 'A Shattered, Colorless Realm1',
+              description1:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+                title2: 'A Shattered, Colorless Realm1',
+                description2:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+             },
             {
-              category: 'Design',
-              title: 'Start with Flowbite Design System',
-              description:
-                'A Shattered, Colorless Realm',
-              button: ''
-            },
+              title1: 'A Shattered, Colorless Realm1',
+              description1:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+                title2: 'A Shattered, Colorless Realm1',
+                description2:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+             },
             {
-              category: 'Code',
-              title: 'Best react libraries around the web',
-              description:
-                'A Shattered, Colorless Realm',
-              button: ''
-            }
+              title1: 'A Shattered, Colorless Realm1',
+              description1:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+                title2: 'A Shattered, Colorless Realm1',
+                description2:
+                'If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card\'s original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.',
+             }
           ]
         }
       ]

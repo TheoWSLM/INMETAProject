@@ -1,33 +1,16 @@
-
-<script>
-
-import LoginModal from './LoginModal.vue';
-
-export default{
-  components:{
-    LoginModal
-  }
-}
-</script>
 <template>
   <nav class="absolute w-full top-0 start-0">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="https://flowbite.com/" class="flex items-center space-x-1 rtl:space-x-reverse">
-        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-          >Flowbite</span
-        >
-      </a>
+      <RouterLink to="/" class="flex items-center space-x-1 rtl:space-x-reverse">
+        <img src="./icons/YuGiCards.png" class="h-14" alt="YuGiCards Logo" />
+      </RouterLink>
       <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <div class="mx-4">
-      <LoginModal/>
-    </div>
-        <button
-          type="button"
-          class="text-white bg-gray-400 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          <LoginModal/>
+        </div>
+        <RouterLink to="/register" class="text-white bg-gray-400 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
           Registrar
-        </button>
+        </RouterLink>
         <button
           data-collapse-toggle="navbar-cta"
           type="button"
@@ -61,37 +44,44 @@ export default{
           class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:text-white dark:border-gray-700"
         >
           <li>
-            <a
-              href="#"
+            <RouterLink
+              to="/"
               class="block py-2 px-3 md:p-0 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
               aria-current="page"
-              >Inicio</a
-            >
+            >Inicio</RouterLink>
           </li>
           <li>
-            <a
-              href="#"
+            <RouterLink
+              to="/cards"
               class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Cartas</a
-            >
+            >Cartas</RouterLink>
           </li>
           <li>
-            <a
-              href="#"
+            <RouterLink
+              to="/how-it-works"
               class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Como funciona?</a
-            >
+            >Como funciona?</RouterLink>
           </li>
           <li>
-            <a
-              href="#"
+            <RouterLink
+              to="/about"
               class="block py-2 px-3 md:p-0 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Sobre</a
-            >
+            >Sobre</RouterLink>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
 </template>
+
+<script>
+import { RouterLink } from 'vue-router';
+import LoginModal from './LoginModal.vue';
+
+export default {
+  components: {
+    LoginModal,
+    RouterLink
+  }
+}
+</script>

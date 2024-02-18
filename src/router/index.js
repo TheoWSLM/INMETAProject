@@ -18,8 +18,8 @@ const router = createRouter({
       component: AboutView
     },
     {
-      path: '/instruction',
-      name: 'instruction',
+      path: '/how-it-works',
+      name: 'how-it-works',
       component: InstructionView
     },
     {

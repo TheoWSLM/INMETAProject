@@ -8,10 +8,6 @@ import FooterFixed from './components/FooterFixed.vue'
   <header>
     <NavBar />
   </header>
-  <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
 
   <RouterView />
   <footer>
