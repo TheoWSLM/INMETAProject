@@ -23,28 +23,28 @@ export default {
         <span class="text-white mb-2 flex items-center justify-center w-8 h-8 bg-purple-700 rounded-full -start-4 dark:bg-purple-700">
            1
         </span>
-        <h3 class="text-lg font-bold text-justify text-gray-500 lg:text-regular dark:text-white">Registro de Usuário</h3>
+        <h3 class="text-lg font-bold text-justify text-gray-900 lg:text-regular dark:text-white">Registro de Usuário</h3>
         <p class="mb-8 text-lg font-normal text-justify text-gray-500 lg:text-regular dark:text-gray-400">Cadastre-se para começar a trocar cartas. É rápido e fácil!</p>
     </li>
     <li class="mb-10 ms-6">
       <span class="text-white mb-2 flex items-center justify-center w-8 h-8 bg-purple-700 rounded-full -start-4 dark:bg-purple-700">
            2
         </span>
-        <h3 class="text-lg font-bold text-justify text-gray-500 lg:text-regular dark:text-white">Seleção de Cartas</h3>
+        <h3 class="text-lg font-bold text-justify text-gray-900 lg:text-regular dark:text-white">Seleção de Cartas</h3>
         <p class="mb-8 text-lg font-normal text-justify text-gray-500 lg:text-regular dark:text-gray-400">Escolha as cartas que você possui da nossa vasta coleção para mostrar aos outros jogadores o que está disponível para troca.</p>
     </li>
     <li class="mb-10 ms-6">
       <span class="text-white mb-2 flex items-center justify-center w-8 h-8 bg-purple-700 rounded-full -start-4 dark:bg-purple-700">
            3
         </span>
-        <h3 class="text-lg font-bold text-justify text-gray-500 lg:text-regular dark:text-white">Abertura de Solicitação de Troca</h3>
+        <h3 class="text-lg font-bold text-justify text-gray-900 lg:text-regular dark:text-white">Abertura de Solicitação de Troca</h3>
         <p class="mb-8 text-lg font-normal text-justify text-gray-500 lg:text-regular dark:text-gray-400">Abra solicitações de troca para as cartas que você deseja trocar. Encontre possíveis parceiros de troca!</p>
     </li>
     <li class="ms-6">
       <span class="text-white mb-2 flex items-center justify-center w-8 h-8 bg-purple-700 rounded-full -start-4 dark:bg-purple-700">
            4
         </span>
-        <h3 class="text-lg font-bold text-justify text-gray-500 lg:text-regular dark:text-white">Execução da Troca</h3>
+        <h3 class="text-lg font-bold text-justify text-gray-900 lg:text-regular dark:text-white">Execução da Troca</h3>
         <p class="mb-8 text-lg font-normal text-justify text-gray-500 lg:text-regular dark:text-gray-400">Finalize a troca das cartas com outros jogadores que aceitarem suas solicitações. Simples e direto!</p>
     </li>
 </ol>

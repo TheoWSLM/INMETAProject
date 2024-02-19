@@ -32,7 +32,7 @@ const router = createRouter({
     },
     {
       path: '/my-cards-and-trades',
-      name: 'my-cards',
+      name: 'my-cards-and-trades',
       component: MyCardsAndTradesView
     },
     {

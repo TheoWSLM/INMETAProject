@@ -2,7 +2,7 @@
     <CardList :content="data" />
   </template>
   <script>
-  import CardList from '@/components/sectionItems/CardList.vue'
+  import CardList from '@/components/sections/CardListSection.vue'
   
   export default {
     components: {

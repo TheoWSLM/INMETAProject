@@ -1,13 +1,14 @@
 <template>
-  <CardList :content="data" />
+<MyCardsAndTradesSection />
 </template>
+
 <script>
-import CardList from '@/components/sectionItems/CardList.vue'
+import MyCardsAndTradesSection from '@/components/sections/MyCardsAndTradesSection.vue';
 
 export default {
   components: {
-    CardList
-  },
+    MyCardsAndTradesSection,
+},
   data() {
     return {
       data: [
