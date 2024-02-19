@@ -44,7 +44,7 @@ const router = createRouter({
       path: '/cards',
       name: 'cards',
       component: CardsView
-    },
+    }
   ]
 })
 

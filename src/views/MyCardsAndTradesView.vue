@@ -1,14 +1,14 @@
 <template>
-<MyCardsAndTradesSection />
+  <MyCardsAndTradesSection />
 </template>
 
 <script>
-import MyCardsAndTradesSection from '@/components/sections/MyCardsAndTradesSection.vue';
+import MyCardsAndTradesSection from '@/components/sections/MyCardsAndTradesSection.vue'
 
 export default {
   components: {
-    MyCardsAndTradesSection,
-},
+    MyCardsAndTradesSection
+  },
   data() {
     return {
       data: [

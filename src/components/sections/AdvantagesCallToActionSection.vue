@@ -10,7 +10,8 @@
     </div>
 
     <div class="pr-10 mx-auto">
-      <TitleAndDescription class="text-start whitespace-pre-line"
+      <TitleAndDescription
+        class="text-start whitespace-pre-line"
         title="Troque cards facilmente
         com o YuGiCards"
         description="• Ampla Seleção de Cartas
