@@ -19,7 +19,7 @@
           <img
             src="@/assets/cardtest.jpeg"
             alt="Banner"
-            class="w-9/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-110"
+            class="w-9/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-125"
           />
           <p class="text-lg font-bold text-center text-gray-500 dark:text-white mb-4">
             {{ card.description }}

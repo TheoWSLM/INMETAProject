@@ -9,7 +9,7 @@
       </svg>
     </div>
 
-    <div class="w-5/12 pr-10 mx-auto">
+    <div class="pr-10 mx-auto">
       <TitleAndDescription class="text-start whitespace-pre-line"
         title="Troque cards facilmente
         com o YuGiCards"

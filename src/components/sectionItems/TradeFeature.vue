@@ -1,11 +1,11 @@
 <template>
     <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-4">
       <div class="flex">
-        <img src="@/assets/cardtest.jpeg" alt="Banner" class="w-5/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-150">
+        <img src="@/assets/cardtest.jpeg" alt="Banner" class="w-5/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-125">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 m-auto">
           <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
         </svg>
-        <img src="@/assets/cardtest.jpeg" alt="Banner" class="w-5/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-150">
+        <img src="@/assets/cardtest.jpeg" alt="Banner" class="w-5/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-125">
       </div>
       <p class="text-sm font-bold text-justify text-gray-500 dark:text-white mb-4">
         Receber <p class="font-normal">{{ trade.title1 }}</p>

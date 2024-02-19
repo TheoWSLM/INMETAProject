@@ -8,8 +8,9 @@ import FooterFixed from './components/FooterFixed.vue'
   <header>
     <NavBar />
   </header>
-
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
   <RouterView />
+  </div>
   <footer>
     <FooterFixed />
   </footer>

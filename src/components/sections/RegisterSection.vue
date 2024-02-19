@@ -1,6 +1,6 @@
 <template>
-  <div class="flex mt-16">
-    <div class="w-4/12 mx-16">
+  <div class="flex justify-between mt-16">
+    <div class="w-5/12 mx-16">
       <TitleAndDescription
         title="Comece a trocar suas cartas hoje"
         description="Se registre agora e comece a desfrutar da emoção de trocar cartas de Yu-Gi-Oh com outros entusiastas como você. É fácil, é divertido e é tudo parte da experiência YuGiCards!"
