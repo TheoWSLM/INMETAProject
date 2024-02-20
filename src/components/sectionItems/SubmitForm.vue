@@ -71,7 +71,7 @@ export default {
           }
         }
       } catch (error) {
-        this.$store.commit('logoutUser');
+        this.$store.commit('logoutUser')
         console.error('Error:', error)
       }
     }
