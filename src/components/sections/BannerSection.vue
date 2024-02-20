@@ -1,8 +1,8 @@
 <template>
-  <div class="flex mt-8 items-center justify-between mx-auto">
-    <div class="mx-auto">
+  <div class="flex flex-col md:flex-row mt-8 items-center justify-between mx-auto">
+    <div class="mx-auto md:mb-4">
       <TitleAndDescription
-        class="text-start whitespace-pre-line"
+        class="text-start lg:whitespace-pre-line"
         title="Encontre o card que 
         procura e complete 
         seu deck"
