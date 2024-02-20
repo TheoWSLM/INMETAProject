@@ -12,21 +12,21 @@ export default {
   data() {
     return {
       data: {
-        cards: [] 
+        cards: []
       }
     }
   },
   created() {
-    this.getAllCards();
+    this.getAllCards()
   },
   methods: {
     async getAllCards() {
       try {
-        const response = await this.allCards();
-        console.log(response.data.list);
-        this.data = response.data.list;
+        const response = await this.allCards()
+        console.log(response.data.list)
+        this.data = response.data.list
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error)
       }
     },
     async allCards() {
