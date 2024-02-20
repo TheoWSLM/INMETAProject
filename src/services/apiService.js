@@ -11,5 +11,8 @@ export default {
 
   loginUser(userData) {
     return apiClient.post('/login', userData)
+  },
+  allCards(){
+    return apiClient.get('/cards?rpp=10&page=1')
   }
 }

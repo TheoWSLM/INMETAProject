@@ -1,29 +1,22 @@
 <template>
   <div>
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
-      <div class="rounded-lg p-6 md:p-6">
-        <h1 class="text-gray-900 dark:text-white text-3xl md:text-3xl font-extrabold mb-2">
-          {{ content[0].title }}
-        </h1>
-        <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
-          {{ content[0].description }}
-        </p>
-      </div>
+      <TitleAndDescription :title="'Cartas disponíveis'" :description="'Aqui estão todas as cartas registradas!'"/>
 
       <div class="grid md:grid-cols-4 gap-16">
         <div
-          v-for="(card, cardIndex) in content[0].cards"
+          v-for="(card, cardIndex) in content"
           :key="cardIndex"
           class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-4"
         >
-          <img
-            src="@/assets/cardtest.jpeg"
-            alt="Banner"
-            class="w-9/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-125"
-          />
-          <p class="text-lg font-bold text-center text-gray-500 dark:text-white mb-4">
-            {{ card.description }}
-          </p>
+        <img
+        :src="card.imageUrl"
+        :alt="card.name"
+        class="w-9/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-125"
+      />
+      <p class="text-lg font-bold text-center text-gray-500 dark:text-white mb-4">
+        {{ card.name }}
+      </p>
 
           <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             <div class="mx-4">
@@ -48,12 +41,15 @@
 </template>
 
 <script>
+import TitleAndDescription from '../sectionItems/TitleAndDescription.vue';
+
 export default {
-  props: {
-    content: {
-      type: Array,
-      required: true
-    }
-  }
+    props: {
+        content: {
+            type: Object,
+            required: true
+        }
+    },
+    components: { TitleAndDescription }
 }
 </script>

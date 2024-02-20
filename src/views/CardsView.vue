@@ -3,6 +3,7 @@
 </template>
 <script>
 import CardList from '@/components/sections/CardListSection.vue'
+import apiService from '@/services/apiService'
 
 export default {
   components: {
@@ -10,23 +11,26 @@ export default {
   },
   data() {
     return {
-      data: [
-        {
-          title: 'Cartas Disponíveis',
-          description: 'Descrição do conteúdo.',
-          cards: [
-            {
-              title: 'Título do Card 1',
-              description: 'Nome do Card 1'
-            },
-            {
-              title: 'Título do Card 2',
-              description: 'Nome do Card 2'
-            }
-            // Adicione mais cards conforme necessário
-          ]
-        }
-      ]
+      data: {
+        cards: [] 
+      }
+    }
+  },
+  created() {
+    this.getAllCards();
+  },
+  methods: {
+    async getAllCards() {
+      try {
+        const response = await this.allCards();
+        console.log(response.data.list);
+        this.data = response.data.list;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    },
+    async allCards() {
+      return await apiService.allCards()
     }
   }
 }
