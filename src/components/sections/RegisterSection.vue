@@ -43,7 +43,7 @@ export default {
             validator: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
             message: 'Formato de email inválido'
           },
-          { validator: (email) => (email.length <= 50), message: 'Email muito longo' }
+          { validator: (email) => email.length <= 50, message: 'Email muito longo' }
         ],
         password: [
           { validator: (password) => password.trim() !== '', message: 'Senha é obrigatória' },

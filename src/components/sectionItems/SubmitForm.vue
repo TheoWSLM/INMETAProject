@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import apiService from '@/services/apiService'
 
 export default {
   props: {
@@ -35,10 +35,6 @@ export default {
     endpoint: String,
     submitLabel: String,
     fieldValidations: Object,
-    method: {
-      type: String,
-      default: 'POST' 
-    },
     requestData: Object
   },
   data() {
@@ -65,15 +61,17 @@ export default {
         if (Object.keys(this.errors).length === 0) {
           console.log('Formulário válido, enviando requisição...')
 
-          const response = await axios({
-            method: this.method,
-            url: this.endpoint,
-            data: this.formData
-          })
-
-          console.log('Resposta da API:', response.data)
+          if (this.endpoint === 'https://cards-marketplace-api.onrender.com/register') {
+            const response = await apiService.registerUser(this.formData)
+            console.log('Resposta da API:', response.data)
+          } else if (this.endpoint === 'https://cards-marketplace-api.onrender.com/login') {
+            const response = await apiService.loginUser(this.formData)
+            console.log('Resposta da API:', response.data)
+            this.$store.dispatch('loginUser', this.formData)
+          }
         }
       } catch (error) {
+        this.$store.commit('logoutUser');
         console.error('Error:', error)
       }
     }
