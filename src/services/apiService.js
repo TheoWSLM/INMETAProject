@@ -21,8 +21,8 @@ export default {
   removeTrades() {
     return apiClient.delete('/trades/:id')
   },
-  criateTrade(tradeData) {
-    return apiClient.post('/trades/:id', tradeData)
+  criateTrade(tradeData, auth) {
+    return apiClient.post('/trades', tradeData, auth)
   },
   myCards(config) {
     return apiClient.get('/me/cards', config)

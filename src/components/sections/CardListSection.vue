@@ -41,6 +41,7 @@
 import CardDetailModal from '../sectionItems/CardDetailModal.vue';
 import apiService from '@/services/apiService'
 import { mapState } from 'vuex';
+import { getTokenFromUser } from '@/services/authService';
 
 
 
@@ -72,45 +73,35 @@ export default {
   methods: {
    async buttonFunction(){
    if(this.buttonLabel === 'Adicionar'){
-    this.addCard();
-   } else {
+   await this.addCard();
+   } else if (this.buttonLabel === 'Selecionar') {
+        this.$emit('selectCard', this.cardInfo.id);
+    } else {
     this.createNewTrade();
    }
     },
 
     async createNewTrade(){
       this.$router.push({ name: 'newTradeCard', params: { id: this.cardInfo.id } });
-    }
     },
+   
 
    async addCard(){
-      console.log('ID do cartão:', this.cardInfo.id);
-    if(!this.userInfo){
-console.log("Usuario não logado");
-   return;
-    }
-    const token = this.userInfo.token
-
-        if (!token) {
-          console.error('Token não encontrado')
-          return
-        }
-
+    try {
+      const token = await getTokenFromUser(this.userInfo);
         const cardId = { cardIds: [this.cardInfo.id] };
         const config = {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
           }
-        }
-        try {
-    const response = await apiService.addCard(cardId, config);
-    console.log(response);
-    this.data = response.data.list;
-  } catch (error) {
-    console.error('Erro ao buscar dados:', error);
-  }
-
+        };
+        const response = await apiService.addCard(cardId, config);
+        this.data = response.data.list;
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
     }
+  },
 }
 
 </script>
