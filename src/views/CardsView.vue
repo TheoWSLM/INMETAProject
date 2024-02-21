@@ -1,13 +1,22 @@
 <template>
-  <CardList :content="data" />
+   <TitleAndDescription
+        :title="'Cartas disponíveis'"
+        :description="'Aqui estão todas as cartas registradas!'"
+      />
+      <div class="grid md:grid-cols-4 gap-16">
+  <CardList  v-for="(card, cardIndex) in data"  :key="cardIndex" :cardInfo="card" />
+</div>
 </template>
 <script>
 import CardList from '@/components/sections/CardListSection.vue'
 import apiService from '@/services/apiService'
+import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 
 export default {
   components: {
-    CardList
+    CardList,
+    TitleAndDescription
+    
   },
   data() {
     return {

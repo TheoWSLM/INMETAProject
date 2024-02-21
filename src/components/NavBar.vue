@@ -40,7 +40,7 @@
         id="navbar-cta"
       >
         <ul
-          class="flex flex-col font-medium p-4 md:p-0 mt-4 border bg-gray-800 md:dark:bg-transparent border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:text-white dark:border-gray-700"
+          class="flex flex-col font-medium p-4 md:p-0 mt-4 border md:bg-transparent md:dark:bg-transparent border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:text-white dark:border-gray-700"
         >
           <li>
             <RouterLink

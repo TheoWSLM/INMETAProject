@@ -24,8 +24,8 @@ export default {
   criateTrade(tradeData) {
     return apiClient.post('/trades/:id', tradeData)
   },
-  myCards() {
-    return apiClient.get('/me/cards')
+  myCards(config) {
+    return apiClient.get('/me/cards', config)
   },
   addCard(cardData) {
     return apiClient.post('/me/cards', cardData)

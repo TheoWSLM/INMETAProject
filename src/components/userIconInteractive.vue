@@ -9,9 +9,9 @@
       src="../assets/theoWeberIcon.png"
       alt="User dropdown"
     />
-    <div class="hidden md:block font-medium dark:text-white">
-      <div>{{ user.name }}</div>
-      <div class="text-sm text-gray-500 dark:text-gray-400">{{ user.email }}</div>
+    <div v-if="userInfo" class="hidden md:block font-medium dark:text-white">
+      <div >{{ userInfo.user.name }}   </div>
+      <div  class="text-sm text-gray-500 dark:text-gray-400">{{ userInfo.user.email }}</div>
     </div>
   </div>
 
@@ -22,13 +22,13 @@
   >
   <!-- User logado -->
     <ul
-      v-if="user.id"
+      v-if="userInfo && userInfo.user.id"
       class="py-2 text-sm text-gray-700 dark:text-gray-200"
       aria-labelledby="avatarButton"
     >
-      <div class="px-4 py-3 text-sm text-gray-900 dark:text-white md:hidden">
-        <div>{{ user.name }}</div>
-        <div class="font-medium truncate">{{ user.email }}</div>
+      <div v-if="userInfo" class="px-4 py-3 text-sm text-gray-900 dark:text-white md:hidden">
+        <div>{{ userInfo.user.name }}</div>
+        <div class="font-medium truncate">{{ userInfo.user.email }}</div>
       </div>
       <li>
         <a
@@ -45,7 +45,7 @@
         >
       </li>
     </ul>
-    <div v-if="user.id" class="py-1">
+    <div v-if="userInfo && userInfo.user.id" class="py-1">
       <a
         @click="logOff"
         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -56,7 +56,7 @@
 <!-- user desconectado -->
     
 <ul
-      v-if="!user.id"
+      v-if="!userInfo || !userInfo.user.id"
       class="py-2 text-sm text-gray-800 dark:text-gray-200"
       aria-labelledby="avatarButton"
     >
@@ -69,7 +69,7 @@
         >
       </li>
     </ul>
-    <div v-if="!user.id" class="py-1">
+    <div v-if="!userInfo || !userInfo.user.id" class="py-1">
       <RouterLink
               to="/register"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -87,7 +87,7 @@ import LoginModal from './LoginModal.vue'
 import { RouterLink } from 'vue-router'
 export default {
   computed: {
-    ...mapState(['user'])
+    ...mapState(['userInfo'])
   },
   components:{
     LoginModal,

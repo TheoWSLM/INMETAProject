@@ -4,7 +4,7 @@ export default {
   async loginUser({ commit }, userData) {
     try {
       const response = await apiService.loginUser(userData)
-      commit('setUser', response.data.user)
+      commit('setUser', response.data)
     } catch (error) {
       console.error('Erro ao fazer login:', error)
     }

@@ -1,8 +1,8 @@
 export default {
   setUser(state, user) {
-    state.user = user
+    state.userInfo = user
   },
   logoutUser(state) {
-    state.user = ''
+    state.userInfo = null
   }
 }

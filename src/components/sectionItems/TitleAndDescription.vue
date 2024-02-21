@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8 max-w-screen-xl lg:py-16">
+  <div class="py-4 max-w-screen-xl lg:py-8">
     <h1
       class="mb-4 text-4xl text-start font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white"
     >

@@ -1,79 +1,52 @@
 <template>
   <BannerSection />
-  <TradeList :content="dataArray" />
+  <TitleAndDescription class="mt-8"
+        :title="'Solicitações de troca em aberto'"
+        :description="'Troque e atualize seu deck!'"
+        :buttonText="'Saiba mais'"
+      />
+  <TradeList :content="data" />
   <AdvantagesCallToAction />
 </template>
+
 
 <script>
 import TradeList from '@/components/sections/TradeListSection.vue'
 import AdvantagesCallToAction from '@/components/sections/AdvantagesCallToActionSection.vue'
 import BannerSection from '@/components/sections/BannerSection.vue'
+import apiService from '@/services/apiService'
+import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 
 export default {
   components: {
     AdvantagesCallToAction,
     TradeList,
-    BannerSection
+    BannerSection,
+    TitleAndDescription
   },
   data() {
     return {
-      dataArray: [
-        {
-          title: 'Confira as últimas solicitações de troca',
-          description: '',
-          descriptionButton: 'Ver todas',
-          trades: [
-            {
-              title1: 'A Shattered, Colorless Realm1',
-              description1:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.",
-              title2: 'A Shattered, Colorless Realm1',
-              description2:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK."
-            },
-            {
-              title1: 'A Shattered, Colorless Realm1',
-              description1:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.",
-              title2: 'A Shattered, Colorless Realm1',
-              description2:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK."
-            },
-            {
-              title1: 'A Shattered, Colorless Realm1',
-              description1:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.",
-              title2: 'A Shattered, Colorless Realm1',
-              description2:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK."
-            },
-            {
-              title1: 'A Shattered, Colorless Realm1',
-              description1:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.",
-              title2: 'A Shattered, Colorless Realm1',
-              description2:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK."
-            },
-            {
-              title1: 'A Shattered, Colorless Realm1',
-              description1:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.",
-              title2: 'A Shattered, Colorless Realm1',
-              description2:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK."
-            },
-            {
-              title1: 'A Shattered, Colorless Realm1',
-              description1:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK.",
-              title2: 'A Shattered, Colorless Realm1',
-              description2:
-                "If Vicious Astraloud is on the field: Target 1 card on the field; destroy it, then, if the destroyed card's original name was Vicious Astraloud, you can Special Summon 1 of your banished Visas Starfrost, or if it was not, you can make 1 Vicious Astraloud you control gain 1500 ATK."
-            }
-          ]
-        }
-      ]
+      data: {
+        trades: []
+      }
+    }
+  },
+  created() {
+    this.getAllTrades()
+  },
+
+  methods: {
+    async getAllTrades() {
+      try {
+        const response = await this.allTrades()
+        // Reduzindo a lista para apenas 4 itens
+        this.data = response.data.list.slice(0, 6)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    },
+    async allTrades() {
+      return await apiService.allTrades()
     }
   }
 }

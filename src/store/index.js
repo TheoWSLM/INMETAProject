@@ -5,7 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 export default new Vuex.Store({
   state: {
-    user: ''
+    userInfo: null
   },
   mutations,
   actions,
