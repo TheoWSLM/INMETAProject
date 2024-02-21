@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import InstructionView from '../views/InstructionView.vue'
 import RegisterView from '@/views/RegisterView.vue'
-import MyCardsAndTradesView from '@/views/MyCardsAndTradesView.vue'
+import UserView from '@/views/userView.vue'
 import TradeView from '@/views/TradeView.vue'
 import CardsView from '@/views/CardsView.vue'
 
@@ -31,9 +31,9 @@ const router = createRouter({
       component: RegisterView
     },
     {
-      path: '/my-cards-and-trades',
-      name: 'my-cards-and-trades',
-      component: MyCardsAndTradesView
+      path: '/user',
+      name: 'user',
+      component: UserView
     },
     {
       path: '/trades',

@@ -1,14 +1,25 @@
 <template>
   <div class="flex items-center gap-4">
-    <img
+    <img v-if="userInfo"
       id="avatarButton"
       type="button"
       data-dropdown-toggle="userDropdown"
       data-dropdown-placement="bottom-start"
       class="w-16 h-16 rounded-full hover:animate-pulse cursor-pointer"
-      src="../assets/theoWeberIcon.png"
+      src="../assets/IconLogged.png"
       alt="User dropdown"
     />
+    <img v-if="!userInfo"
+      id="avatarButton"
+      type="button"
+      data-dropdown-toggle="userDropdown"
+      data-dropdown-placement="bottom-start"
+      class="w-16 h-16 rounded-full hover:animate-pulse cursor-pointer"
+      src="../assets/IconUnlogged.png"
+      alt="User dropdown"
+    />
+
+
     <div v-if="userInfo" class="hidden md:block font-medium dark:text-white">
       <div >{{ userInfo.user.name }}   </div>
       <div  class="text-sm text-gray-500 dark:text-gray-400">{{ userInfo.user.email }}</div>

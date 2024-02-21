@@ -15,6 +15,7 @@
 
             <div class="flex mx-auto gap-4 items-end">
     <button
+    @click="addCard(cardInfo.id)"
         type="button"
         class="relative inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-900 to-amber-600 group-hover:from-purple-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300"
     >
@@ -33,12 +34,21 @@
 
         </div>
   <CardDetailModal v-if="showModal" :card="cardInfo" :showModal="showModal" @close="showModal = false"  />
+
 </template>
 
 <script>
 import CardDetailModal from '../sectionItems/CardDetailModal.vue';
+import apiService from '@/services/apiService'
+import { mapState } from 'vuex';
+
+
 
 export default {
+  components: { CardDetailModal },
+  computed:{
+    ...mapState(['userInfo'])
+  },
   props: {
     cardInfo: {
       type: Object,
@@ -50,6 +60,35 @@ export default {
         showModal: false
       }
     },
-  components: { CardDetailModal }
+  methods: {
+   async addCard(id){
+    console.log('ID do cartão:', id);
+    if(!this.userInfo){
+console.log("Usuario não logado");
+   return;
+    }
+    const token = this.userInfo.token
+
+        if (!token) {
+          console.error('Token não encontrado')
+          return
+        }
+
+        const cardIds = { cardIds: [id] };
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+        try {
+    const response = await apiService.addCard(cardIds, config);
+    console.log(response);
+    this.data = response.data.list;
+  } catch (error) {
+    console.error('Erro ao buscar dados:', error);
+  }
+    }
+  },
+  
 }
 </script>
