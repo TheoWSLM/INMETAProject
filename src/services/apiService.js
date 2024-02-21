@@ -27,9 +27,10 @@ export default {
   myCards(config) {
     return apiClient.get('/me/cards', config)
   },
-  addCard(cardIds, config) { // Altera a assinatura da função
-  return apiClient.post('/me/cards', cardIds, config); // Passa cardData como dados e config como configuração
-},
+  addCard(cardIds, config) {
+    // Altera a assinatura da função
+    return apiClient.post('/me/cards', cardIds, config) // Passa cardData como dados e config como configuração
+  },
   myInformations() {
     return apiClient.get('/me')
   }

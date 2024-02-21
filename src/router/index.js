@@ -51,7 +51,7 @@ const router = createRouter({
       name: 'newTradeCard',
       component: TradeCardView,
       props: true
-    },
+    }
   ]
 })
 

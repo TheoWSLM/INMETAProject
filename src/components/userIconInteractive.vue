@@ -1,6 +1,7 @@
 <template>
   <div class="flex items-center gap-4">
-    <img v-if="userInfo"
+    <img
+      v-if="userInfo"
       id="avatarButton"
       type="button"
       data-dropdown-toggle="userDropdown"
@@ -9,7 +10,8 @@
       src="../assets/IconLogged.png"
       alt="User dropdown"
     />
-    <img v-if="!userInfo"
+    <img
+      v-if="!userInfo"
       id="avatarButton"
       type="button"
       data-dropdown-toggle="userDropdown"
@@ -19,10 +21,9 @@
       alt="User dropdown"
     />
 
-
     <div v-if="userInfo" class="hidden md:block font-medium dark:text-white">
-      <div >{{ userInfo.user.name }}   </div>
-      <div  class="text-sm text-gray-500 dark:text-gray-400">{{ userInfo.user.email }}</div>
+      <div>{{ userInfo.user.name }}</div>
+      <div class="text-sm text-gray-500 dark:text-gray-400">{{ userInfo.user.email }}</div>
     </div>
   </div>
 
@@ -31,7 +32,7 @@
     id="userDropdown"
     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-800 dark:divide-gray-600"
   >
-  <!-- User logado -->
+    <!-- User logado -->
     <ul
       v-if="userInfo && userInfo.user.id"
       class="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -64,9 +65,9 @@
       >
     </div>
 
-<!-- user desconectado -->
-    
-<ul
+    <!-- user desconectado -->
+
+    <ul
       v-if="!userInfo || !userInfo.user.id"
       class="py-2 text-sm text-gray-800 dark:text-gray-200"
       aria-labelledby="avatarButton"
@@ -74,7 +75,7 @@
       <li>
         <a
           data-modal-target="authentication"
-         data-modal-toggle="authentication"
+          data-modal-toggle="authentication"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >Login</a
         >
@@ -82,14 +83,14 @@
     </ul>
     <div v-if="!userInfo || !userInfo.user.id" class="py-1">
       <RouterLink
-              to="/register"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              >Registre-se</RouterLink
-            >
+        to="/register"
+        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+        >Registre-se</RouterLink
+      >
     </div>
   </div>
 
-  <LoginModal/>
+  <LoginModal />
 </template>
 
 <script>
@@ -100,14 +101,14 @@ export default {
   computed: {
     ...mapState(['userInfo'])
   },
-  components:{
+  components: {
     LoginModal,
     RouterLink
   },
-  methods:{
-    logOff(){
-        this.$store.dispatch('logoutUser')
+  methods: {
+    logOff() {
+      this.$store.dispatch('logoutUser')
     }
-  },
+  }
 }
 </script>

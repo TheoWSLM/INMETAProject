@@ -1,14 +1,14 @@
 <template>
   <BannerSection />
-  <TitleAndDescription class="mt-8"
-        :title="'Solicitações de troca em aberto'"
-        :description="'Troque e atualize seu deck!'"
-        :buttonText="'Saiba mais'"
-      />
+  <TitleAndDescription
+    class="mt-8"
+    :title="'Solicitações de troca em aberto'"
+    :description="'Troque e atualize seu deck!'"
+    :buttonText="'Saiba mais'"
+  />
   <TradeList :content="data" />
   <AdvantagesCallToAction />
 </template>
-
 
 <script>
 import TradeList from '@/components/sections/TradeListSection.vue'

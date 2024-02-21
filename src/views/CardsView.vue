@@ -12,11 +12,7 @@
     />
 
     <div class="grid md:grid-cols-4 gap-16">
-      <CardList
-        v-for="(card, cardIndex) in afterFilterCards"
-        :key="cardIndex"
-        :cardInfo="card"
-      />
+      <CardList v-for="(card, cardIndex) in afterFilterCards" :key="cardIndex" :cardInfo="card" />
     </div>
   </div>
 </template>
@@ -62,23 +58,23 @@ export default {
     filterCards() {
       // Filtrar as cartas com base no searchTerm
       if (!this.searchTerm) {
-        this.afterFilterCards = this.data;
+        this.afterFilterCards = this.data
       } else {
-        this.afterFilterCards = this.data.filter(card =>
+        this.afterFilterCards = this.data.filter((card) =>
           card.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
+        )
       }
     },
     handleSearchTermUpdate(newSearchTerm) {
-      this.searchTerm = newSearchTerm;
-      this.filterCards();
+      this.searchTerm = newSearchTerm
+      this.filterCards()
     }
   },
   computed: {
     filteredCards() {
-      return this.data.filter(card =>
+      return this.data.filter((card) =>
         card.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
+      )
     }
   }
 }

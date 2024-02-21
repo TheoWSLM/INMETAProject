@@ -1,6 +1,5 @@
 <template>
-  <MyCards :myCards="data"  />
-
+  <MyCards :myCards="data" />
 </template>
 
 <script>
@@ -12,24 +11,22 @@ export default {
   components: {
     MyCards
   },
-  computed:{
+  computed: {
     ...mapState(['userInfo'])
   },
   data() {
     return {
       data: {
-        cards: [],
+        cards: []
       }
     }
   },
   mounted() {
-
-    this.getMyCards();
+    this.getMyCards()
   },
   methods: {
     async getMyCards() {
       try {
-
         const token = this.userInfo.token
 
         if (!token) {
@@ -37,16 +34,14 @@ export default {
           return
         }
 
-   
         const config = {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }
 
-
         const response = await apiService.myCards(config)
-       
+
         this.data = response.data
         console.log(response.data)
       } catch (error) {
@@ -55,7 +50,7 @@ export default {
     },
     async myCards() {
       return await apiService.myCards()
-    },
+    }
   }
 }
 </script>

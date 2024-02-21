@@ -1,11 +1,10 @@
 <template>
-   <TitleAndDescription
-        :title="'Solicitações de troca em aberto'"
-        :description="'Troque e atualize seu deck!'"
-      />
+  <TitleAndDescription
+    :title="'Solicitações de troca em aberto'"
+    :description="'Troque e atualize seu deck!'"
+  />
   <TradeListSection :content="data" />
 </template>
-
 
 <script>
 import TradeListSection from '@/components/sections/TradeListSection.vue'
