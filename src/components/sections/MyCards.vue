@@ -4,7 +4,7 @@
         :description="'Aqui estão todas as suas cartas registradas!'"
       />
       <div class="grid md:grid-cols-4 gap-16">
-  <CardList  v-for="(myCard, cardIndex) in myCards"  :key="cardIndex" :cardInfo="myCard" />
+  <CardList  v-for="(myCard, cardIndex) in myCards"  :key="cardIndex" :cardInfo="myCard" :buttonLabel="'Trocar'"/>
 </div>
 </template>
 

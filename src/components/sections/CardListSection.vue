@@ -13,16 +13,16 @@
             {{ cardInfo.name }}
           </p>
 
-            <div class="flex mx-auto gap-4 items-end">
-    <button
-    @click="addCard(cardInfo.id)"
+            <div class="flex justify-center mx-auto gap-4">
+              <button
+              @click="buttonFunction()"
         type="button"
         class="relative inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-900 to-amber-600 group-hover:from-purple-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300"
-    >
+      >
         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-            Adicionar
+          {{ buttonLabel }}
         </span>
-    </button>
+      </button>
 
     <button @click="showModal = true" class="relative inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-900 to-amber-600 group-hover:from-purple-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300">
         <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -53,7 +53,11 @@ export default {
     cardInfo: {
       type: Object,
       required: true
-    }
+    },
+    buttonLabel: {
+      type: String,
+      default: 'Adicionar'
+    },
   },
     data() {
       return {
@@ -61,8 +65,20 @@ export default {
       }
     },
   methods: {
-   async addCard(id){
-    console.log('ID do cartão:', id);
+   async buttonFunction(){
+   if(this.buttonLabel === 'Adicionar'){
+    this.addCard();
+   } else {
+    this.addCard();
+   }
+    },
+
+    async createNewTrade(){
+
+    },
+
+   async addCard(){
+      console.log('ID do cartão:', this.cardInfo.id);
     if(!this.userInfo){
 console.log("Usuario não logado");
    return;
@@ -74,19 +90,20 @@ console.log("Usuario não logado");
           return
         }
 
-        const cardIds = { cardIds: [id] };
+        const cardId = { cardIds: [this.cardInfo.id] };
         const config = {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }
         try {
-    const response = await apiService.addCard(cardIds, config);
+    const response = await apiService.addCard(cardId, config);
     console.log(response);
     this.data = response.data.list;
   } catch (error) {
     console.error('Erro ao buscar dados:', error);
   }
+
     }
   },
   
