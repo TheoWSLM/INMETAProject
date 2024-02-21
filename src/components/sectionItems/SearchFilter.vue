@@ -11,7 +11,6 @@
             placeholder="Digite o nome da carta" 
             :value="searchTerm" 
             @input="updateSearchTerm($event.target.value)" required />
-           
         </div>
     </form>
 </template>

@@ -38,9 +38,8 @@ export default{
      afterFilterCards: [] 
    }
  },
- mounted(){
-
-   this.afterFilterCards = this.myCards;
+ beforeUpdate(){
+  this.filterCards();
  },
  methods:{
    filterCards() {
@@ -57,7 +56,7 @@ export default{
    handleSearchTermUpdate(newSearchTerm) {
      this.searchTerm = newSearchTerm;
      this.filterCards();
-   }
+   },
  }
 };
 </script>

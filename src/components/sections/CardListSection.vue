@@ -14,7 +14,7 @@
           </p>
 
             <div class="flex justify-center mx-auto gap-4">
-              <button
+              <button v-if="!tradeCard"
               @click="buttonFunction()"
         type="button"
         class="relative inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-900 to-amber-600 group-hover:from-purple-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300"
@@ -58,6 +58,11 @@ export default {
       type: String,
       default: 'Adicionar'
     },
+    tradeCard: {
+      type: Boolean,
+      default: false,
+      required:false
+    },
   },
     data() {
       return {
@@ -69,12 +74,13 @@ export default {
    if(this.buttonLabel === 'Adicionar'){
     this.addCard();
    } else {
-    this.addCard();
+    this.createNewTrade();
    }
     },
 
     async createNewTrade(){
-
+      this.$router.push({ name: 'newTradeCard', params: { id: this.cardInfo.id } });
+    }
     },
 
    async addCard(){
@@ -105,7 +111,6 @@ console.log("Usuario não logado");
   }
 
     }
-  },
-  
 }
+
 </script>

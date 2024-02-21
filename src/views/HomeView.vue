@@ -39,7 +39,7 @@ export default {
     async getAllTrades() {
       try {
         const response = await this.allTrades()
-        // Reduzindo a lista para apenas 4 itens
+
         this.data = response.data.list.slice(0, 6)
       } catch (error) {
         console.error('Error fetching data:', error)

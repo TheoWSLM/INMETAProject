@@ -6,6 +6,7 @@ import RegisterView from '@/views/RegisterView.vue'
 import UserView from '@/views/userView.vue'
 import TradeView from '@/views/TradeView.vue'
 import CardsView from '@/views/CardsView.vue'
+import TradeCardView from '@/views/TradeCardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,7 +45,13 @@ const router = createRouter({
       path: '/cards',
       name: 'cards',
       component: CardsView
-    }
+    },
+    {
+      path: '/card/:id',
+      name: 'newTradeCard',
+      component: TradeCardView,
+      props: true
+    },
   ]
 })
 
