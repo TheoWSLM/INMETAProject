@@ -7,7 +7,9 @@
     :buttonText="'Ver todas'"
   />
   <TradeList :content="data" />
+  <div class="mt-16" >
   <AdvantagesCallToAction />
+</div>
 </template>
 
 <script>
