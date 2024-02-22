@@ -13,7 +13,8 @@
       />
       <p v-if="errors[field.id]" class="text-red-500">{{ errors[field.id] }}</p>
     </div>
-    <button
+    <button 
+    
       type="submit"
       class="relative inline-flex items-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-900 to-amber-600 group-hover:from-purple-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300"
     >
@@ -28,6 +29,7 @@
 
 <script>
 import apiService from '@/services/apiService'
+import alertService from '@/services/alertService'
 
 export default {
   props: {
@@ -62,19 +64,40 @@ export default {
           console.log('Formulário válido, enviando requisição...')
 
           if (this.endpoint === 'https://cards-marketplace-api.onrender.com/register') {
-            const response = await apiService.registerUser(this.formData)
-            console.log('Resposta da API:', response.data)
-          } else if (this.endpoint === 'https://cards-marketplace-api.onrender.com/login') {
-            const response = await apiService.loginUser(this.formData)
-            console.log('Resposta da API:', response.data)
-            this.$store.dispatch('loginUser', this.formData)
-          }
+        await this.registerRequest()
+      } else if (this.endpoint === 'https://cards-marketplace-api.onrender.com/login') {
+        await this.loginRequest()
+      }
         }
       } catch (error) {
         this.$store.commit('logoutUser')
         console.error('Error:', error)
       }
+    },
+
+  async registerRequest() {
+    try {
+       await apiService.registerUser(this.formData)
+      alertService.success();
+    } catch (error) {
+      alertService.newUserError();
+
+      this.errors['registerError'] = 'Ocorreu um erro ao registrar o usuário.'
+    }
+  },
+  async loginRequest() {
+    try {
+      const response = await apiService.loginUser(this.formData)
+      console.log(response);
+      alertService.success();
+      this.$emit('form-submitted');
+      this.$store.dispatch('loginUser', this.formData)
+    } catch (error) {
+      console.error('Erro ao fazer login:', error)
+
+      alertService.authError();
     }
   }
+},
 }
 </script>

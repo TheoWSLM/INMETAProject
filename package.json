@@ -11,12 +11,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@sweetalert2/theme-dark": "^5.0.16",
     "axios": "^1.6.7",
     "flowbite": "^2.3.0",
     "moment": "^2.30.1",
     "sweetalert2": "^11.10.5",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
+    "vue-sweetalert2": "^5.0.5",
     "vuex": "^4.0.2",
     "vuex-persistedstate": "^4.1.0"
   },

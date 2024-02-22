@@ -20,6 +20,7 @@ import TradeListSection from '@/components/sections/TradeListSection.vue'
 import apiService from '@/services/apiService'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
+import alertService from '@/services/alertService'
 
 export default {
   components: {
@@ -48,7 +49,7 @@ export default {
         console.log(this.nextPageExist)
         this.data = response.data.list
       } catch (error) {
-        console.error('Error fetching data:', error)
+        alertService.conectionError();
       }
     },
     async allTrades(rpp, page) {

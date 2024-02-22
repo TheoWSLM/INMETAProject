@@ -50,6 +50,8 @@ import CardDetailModal from '../sectionItems/CardDetailModal.vue'
 import apiService from '@/services/apiService'
 import { mapState } from 'vuex'
 import { getTokenFromUser } from '@/services/authService'
+import alertService from '@/services/alertService'
+
 
 export default {
   components: { CardDetailModal },
@@ -102,8 +104,9 @@ export default {
         }
         const response = await apiService.addCard(cardId, config)
         this.data = response.data.list
+        alertService.success();
       } catch (error) {
-        console.error('Erro ao buscar dados:', error)
+        alertService.authError('Ocorreu um erro','Se certifique de estar logado e verifique sua conexão com a internet');
       }
     }
   }

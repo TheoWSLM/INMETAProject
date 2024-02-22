@@ -19,6 +19,7 @@ import TradeListSection from '@/components/sections/TradeListSection.vue'
 import apiService from '@/services/apiService'
 import { getTokenFromUser } from '@/services/authService'
 import { mapState } from 'vuex'
+import alertService from '@/services/alertService'
 
 export default {
   components: {
@@ -38,6 +39,14 @@ export default {
         trades: []
       }
     }
+  },
+  created(){
+
+    if (!this.userVerify()) {
+    alertService.authError("Erro de Autenticação", "Usuário não autenticado. Redirecionando para a página de login.")
+    this.$router.push('/')
+  }
+
   },
   async mounted() {
     await this.getMyCards()
@@ -59,7 +68,7 @@ export default {
         this.data = response.data
         console.log(response.data)
       } catch (error) {
-        console.error('Error fetching data:', error)
+        alertService.authError();
       }
     },
     async myCards() {
@@ -85,13 +94,17 @@ export default {
 
         console.log('Todos os trades do usuário:', this.dataTrades.trades)
       } catch (error) {
-        console.error('Ocorreu um erro ao buscar os trades:', error)
+        alertService.conectionError();
       }
     },
     async fetchTrades(rpp, page) {
       const response = await apiService.allTrades(rpp, page)
       return response
+    },
+    userVerify(){
+      return this.userInfo && this.userInfo.token
     }
+
   }
 }
 </script>
