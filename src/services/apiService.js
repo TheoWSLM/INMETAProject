@@ -12,14 +12,15 @@ export default {
   loginUser(userData) {
     return apiClient.post('/login', userData)
   },
-  allCards() {
-    return apiClient.get('/cards?rpp=10&page=1')
+  allCards(rpp = 12, page = 1) {
+    return apiClient.get(`/cards?rpp=${rpp}&page=${page}`);
   },
-  allTrades() {
-    return apiClient.get('/trades?rpp=10&page=1')
+
+  allTrades(rpp = 9, page = 1) {
+    return apiClient.get(`/trades?rpp=${rpp}&page=${page}`);
   },
-  removeTrades() {
-    return apiClient.delete('/trades/:id')
+  removeTrade(tradeId, config) { 
+    return apiClient.delete(`/trades/${tradeId}`, config) 
   },
   criateTrade(tradeData, auth) {
     return apiClient.post('/trades', tradeData, auth)
