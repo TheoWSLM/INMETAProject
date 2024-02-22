@@ -13,7 +13,16 @@
     :filterCards="filterCards"
     @update:searchTerm="handleSearchTermUpdate"
   />
+  <div class="mb-10">
+  <PaginationButtons
+    :currentPage="currentPage"
+  @next-page="nextPage"
+  @prev-page="prevPage"
+  :nextPageExist="nextPageExist"
+    />
+  </div>
   <div class="grid md:grid-cols-4 gap-16">
+    
     <CardListSection
       v-for="(card, cardIndex) in afterFilterCards"
       :key="cardIndex"
@@ -22,7 +31,6 @@
       @selectCard="cardSelected"
     />
   </div>
-  <!-- <TradeDetailsModal v-if="showModal" :trade="trade" :showModal="showModal" @close="showModal = false"  /> -->
 </template>
 
 <script>
@@ -32,7 +40,8 @@ import apiService from '@/services/apiService.js'
 import { getTokenFromUser } from '@/services/authService.js'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 import { mapState } from 'vuex'
-// import TradeDetailsModal from '@/components/sectionItems/TradeDetailsModal.vue';
+import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
+
 
 export default {
   props: {
@@ -51,7 +60,9 @@ export default {
       afterFilterCards: [],
       cardToTrade: [],
       showModal: false,
-      requestBody: null
+      requestBody: null,
+      currentPage: 1,
+      nextPageExist: true,
     }
   },
   async created() {
@@ -60,18 +71,18 @@ export default {
     this.findUserCard()
   },
   methods: {
-    async getAllCards() {
+    async getAllCards(page = 1) {
       try {
-        const response = await this.allCards()
-        console.log(response.data.list)
+        const response = await this.allCards(12, page)
+        this.nextPageExist = response.data.more
         this.data = response.data.list
         this.afterFilterCards = this.data
       } catch (error) {
         console.error('Error fetching data:', error)
       }
     },
-    async allCards() {
-      return await apiService.allCards()
+    async allCards(rpp, page) {
+      return await apiService.allCards(rpp, page)
     },
     filterCards() {
       // Filtrar as cartas com base no searchTerm
@@ -127,7 +138,18 @@ export default {
           }
         ]
       }
-    }
+    },
+    async nextPage() {
+    this.currentPage++;
+    await this.getAllCards(this.currentPage);
+  
+
+    
+  },
+  async prevPage() {
+    this.currentPage--;
+    await this.getAllCards(this.currentPage);
+  },
   },
   computed: {
     filteredCards() {
@@ -140,7 +162,8 @@ export default {
   components: {
     CardListSection,
     SearchFilter,
-    TitleAndDescription
+    TitleAndDescription,
+    PaginationButtons
   }
 }
 </script>

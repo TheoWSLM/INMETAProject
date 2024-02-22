@@ -46,7 +46,6 @@ export default {
       searchTerm: '',
       afterFilterCards: [],
       currentPage: 1,
-      totalPages: null,
       nextPageExist: true,
     }
   },
