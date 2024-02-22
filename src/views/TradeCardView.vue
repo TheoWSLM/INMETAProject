@@ -14,15 +14,14 @@
     @update:searchTerm="handleSearchTermUpdate"
   />
   <div class="mb-10">
-  <PaginationButtons
-    :currentPage="currentPage"
-  @next-page="nextPage"
-  @prev-page="prevPage"
-  :nextPageExist="nextPageExist"
+    <PaginationButtons
+      :currentPage="currentPage"
+      @next-page="nextPage"
+      @prev-page="prevPage"
+      :nextPageExist="nextPageExist"
     />
   </div>
   <div class="grid md:grid-cols-4 gap-16">
-    
     <CardListSection
       v-for="(card, cardIndex) in afterFilterCards"
       :key="cardIndex"
@@ -41,7 +40,6 @@ import { getTokenFromUser } from '@/services/authService.js'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 import { mapState } from 'vuex'
 import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
-
 
 export default {
   props: {
@@ -62,7 +60,7 @@ export default {
       showModal: false,
       requestBody: null,
       currentPage: 1,
-      nextPageExist: true,
+      nextPageExist: true
     }
   },
   async created() {
@@ -140,16 +138,13 @@ export default {
       }
     },
     async nextPage() {
-    this.currentPage++;
-    await this.getAllCards(this.currentPage);
-  
-
-    
-  },
-  async prevPage() {
-    this.currentPage--;
-    await this.getAllCards(this.currentPage);
-  },
+      this.currentPage++
+      await this.getAllCards(this.currentPage)
+    },
+    async prevPage() {
+      this.currentPage--
+      await this.getAllCards(this.currentPage)
+    }
   },
   computed: {
     filteredCards() {

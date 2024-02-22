@@ -29,7 +29,7 @@ export default {
     return apiClient.get('/me/cards', config)
   },
   addCard(cardIds, config) {
-    return apiClient.post('/me/cards', cardIds, config) 
+    return apiClient.post('/me/cards', cardIds, config)
   },
   myInformations() {
     return apiClient.get('/me')

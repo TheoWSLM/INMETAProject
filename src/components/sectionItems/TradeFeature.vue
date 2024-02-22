@@ -72,6 +72,7 @@ const config = {
       console.log(this.trade.id);
       const response = await apiService.removeTrade(this.trade.id, config);
       console.log(response);
+      this.$emit('delete-trade');
     } catch (error) {
       console.error('Error deleting trade:', error);
     }

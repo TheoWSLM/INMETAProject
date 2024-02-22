@@ -10,16 +10,16 @@
       :filterCards="filterCards"
       @update:searchTerm="handleSearchTermUpdate"
     />
-    <div class="mb-10">
-      <PaginationButtons
-  :currentPage="currentPage"
-  @next-page="nextPage"
-  @prev-page="prevPage"
-  :nextPageExist="nextPageExist"
-/>
-</div>
     <div class="grid md:grid-cols-4 gap-16">
       <CardList v-for="(card, cardIndex) in afterFilterCards" :key="cardIndex" :cardInfo="card" />
+    </div>
+    <div class="my-10">
+      <PaginationButtons
+        :currentPage="currentPage"
+        @next-page="nextPage"
+        @prev-page="prevPage"
+        :nextPageExist="nextPageExist"
+      />
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
       searchTerm: '',
       afterFilterCards: [],
       currentPage: 1,
-      nextPageExist: true,
+      nextPageExist: true
     }
   },
   created() {
@@ -82,16 +82,13 @@ export default {
       this.filterCards()
     },
     async nextPage() {
-    this.currentPage++;
-    await this.getAllCards(this.currentPage);
-  
-
-    
-  },
-  async prevPage() {
-    this.currentPage--;
-    await this.getAllCards(this.currentPage);
-  },
+      this.currentPage++
+      await this.getAllCards(this.currentPage)
+    },
+    async prevPage() {
+      this.currentPage--
+      await this.getAllCards(this.currentPage)
+    }
   },
   computed: {
     filteredCards() {

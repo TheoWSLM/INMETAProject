@@ -9,7 +9,7 @@
       :description="'Gerencie suas solicitações'"
     />
   </div>
-  <TradeListSection :myTrade="true" :content="dataTrades.trades" />
+  <TradeListSection @delete-trade="getMyTrades" :myTrade="true" :content="dataTrades.trades" />
 </template>
 
 <script>

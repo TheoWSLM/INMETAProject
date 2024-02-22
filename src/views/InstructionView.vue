@@ -8,17 +8,17 @@ export default {
 </script>
 
 <template>
-  <div class="flex w-full mt-8 justify-start mx-auto">
-    <div class="mx-auto w-6/12">
+  <div class="flex flex-col w-full mt-8 justify-start mx-auto">
+    <div class="mx-auto">
       <TitleAndDescription
         class="text-start whitespace-pre-line"
         title="Troque cartas de Yu-Gi-Oh com segurança"
-        description="YuGiCards é seu portal para o mundo das trocas de cartas de Yu-Gi-Oh! Oferecemos uma ampla seleção de cartas, permitindo que você troque suas repetidas por aquelas que procura há tanto tempo ou descubra novas adições para sua coleção. Sempre priorizamos segurança e transparência, garantindo trocas confiáveis em um ambiente protegido.
+        description="YuGiCards é seu portal para o mundo das trocas de cartas de Yu-Gi-Oh! Sempre priorizamos segurança e transparência, garantindo trocas confiáveis em um ambiente protegido.
           
-          Nossa plataforma foi projetada pensando na facilidade de uso, com apenas alguns cliques, você pode fazer propostas de trocas e expandir sua própria coleção de maneira rápida:"
+          Nossa plataforma foi projetada pensando na facilidade de uso, com apenas alguns cliques, você pode fazer propostas de trocas e expandir sua própria coleção de maneira rápida!"
       />
     </div>
-    <div class="mx-auto lg:py-16 w-5/12">
+    <div class="mx-auto lg:py-16">
       <ol>
         <li class="mb-10 ms-6">
           <span
@@ -65,22 +65,6 @@ export default {
           >
             Abra solicitações de troca para as cartas que você deseja trocar. Encontre possíveis
             parceiros de troca!
-          </p>
-        </li>
-        <li class="ms-6">
-          <span
-            class="text-white mb-2 flex items-center justify-center w-8 h-8 bg-purple-700 rounded-full -start-4 dark:bg-purple-700"
-          >
-            4
-          </span>
-          <h3 class="text-lg font-bold text-justify text-gray-900 lg:text-regular dark:text-white">
-            Execução da Troca
-          </h3>
-          <p
-            class="mb-8 text-lg font-normal text-justify text-gray-500 lg:text-regular dark:text-gray-400"
-          >
-            Finalize a troca das cartas com outros jogadores que aceitarem suas solicitações.
-            Simples e direto!
           </p>
         </li>
       </ol>

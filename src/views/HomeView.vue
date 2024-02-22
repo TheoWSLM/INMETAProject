@@ -4,7 +4,7 @@
     class="mt-8"
     :title="'Solicitações de troca em aberto'"
     :description="'Troque e atualize seu deck!'"
-    :buttonText="'Saiba mais'"
+    :buttonText="'Ver todas'"
   />
   <TradeList :content="data" />
   <AdvantagesCallToAction />

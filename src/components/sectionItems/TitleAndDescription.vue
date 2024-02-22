@@ -1,12 +1,12 @@
 <template>
   <div class="py-4 max-w-screen-xl lg:py-8">
     <h1
-      class="mb-4 text-4xl text-start font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white"
+      class="mb-2 text-3xl text-start font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-3xl dark:text-white"
     >
       {{ title }}
     </h1>
     <p
-      class="mb-8 text-lg font-normal text-justify text-gray-500 lg:text-regular dark:text-gray-400"
+      class="mb-4 text-lg font-normal text-justify text-gray-500 lg:text-regular dark:text-gray-400"
     >
       {{ description }}
     </p>

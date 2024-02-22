@@ -1,15 +1,18 @@
 <template>
   <TitleAndDescription
+    class="mt-10"
     :title="'Solicitações de troca em aberto'"
     :description="'Troque e atualize seu deck!'"
   />
-  <PaginationButtons
-  :currentPage="currentPage"
-  @next-page="nextPage"
-  @prev-page="prevPage"
-  :nextPageExist="nextPageExist"
-  />
   <TradeListSection :content="data" />
+  <div class="my-10">
+      <PaginationButtons
+        :currentPage="currentPage"
+        @next-page="nextPage"
+        @prev-page="prevPage"
+        :nextPageExist="nextPageExist"
+      />
+    </div>
 </template>
 
 <script>
@@ -23,15 +26,14 @@ export default {
     TradeListSection,
     TitleAndDescription,
     PaginationButtons
-},
+  },
   data() {
     return {
       data: {
-        trades: [],
-        
+        trades: []
       },
       currentPage: 1,
-      nextPageExist: true,
+      nextPageExist: true
     }
   },
   created() {
@@ -43,7 +45,7 @@ export default {
       try {
         const response = await this.allTrades(9, page)
         this.nextPageExist = response.data.more
-        console.log(this.nextPageExist);
+        console.log(this.nextPageExist)
         this.data = response.data.list
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -53,17 +55,14 @@ export default {
       return await apiService.allTrades(rpp, page)
     },
     async nextPage() {
-    this.currentPage++;
-    console.log(this.currentPage)
-    await this.getAllTrades(this.currentPage);
-  
-
-    
-  },
-  async prevPage() {
-    this.currentPage--;
-    await this.getAllTrades(this.currentPage);
-  }
+      this.currentPage++
+      console.log(this.currentPage)
+      await this.getAllTrades(this.currentPage)
+    },
+    async prevPage() {
+      this.currentPage--
+      await this.getAllTrades(this.currentPage)
+    }
   }
 }
 </script>

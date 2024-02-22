@@ -16,9 +16,6 @@
           <li>
             <RouterLink to="/about" class="hover:underline me-4 md:me-6">Sobre</RouterLink>
           </li>
-          <li>
-            <RouterLink to="/contacts" class="hover:underline">Contatos</RouterLink>
-          </li>
         </ul>
       </div>
       <hr class="border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
