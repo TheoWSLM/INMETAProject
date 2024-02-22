@@ -5,6 +5,7 @@
     :title="'Solicitações de troca em aberto'"
     :description="'Troque e atualize seu deck!'"
     :buttonText="'Ver todas'"
+    @button-clicked="redirect"
   />
   <TradeList :content="data" />
   <div class="mt-16" >
@@ -49,7 +50,7 @@ export default {
     },
     async allTrades() {
       return await apiService.allTrades()
-    }
+    },
   }
 }
 </script>
