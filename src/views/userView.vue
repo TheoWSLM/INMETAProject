@@ -1,16 +1,15 @@
 <template>
   <div class="mb-16">
-  <MyCards :myCards="data" />
-</div>
+    <MyCards :myCards="data" />
+  </div>
 
-<div class="mb-0">
-  <TitleAndDescription
+  <div class="mb-0">
+    <TitleAndDescription
       :title="'Suas solicitações de troca'"
       :description="'Gerencie suas solicitações'"
     />
   </div>
-    <TradeListSection  :content="dataTrades.trades" />
-
+  <TradeListSection :myTrade="true" :content="dataTrades.trades" />
 </template>
 
 <script>
@@ -26,28 +25,28 @@ export default {
     MyCards,
     TitleAndDescription,
     TradeListSection
-},
+  },
   computed: {
     ...mapState(['userInfo'])
   },
   data() {
     return {
       data: {
-        cards: [],
+        cards: []
       },
-      dataTrades:{
-        trades:[]
-      }
+      dataTrades: {
+        trades: []
+      },
     }
   },
   async mounted() {
-   await this.getMyCards()
+    await this.getMyCards()
     await this.getMyTrades()
   },
   methods: {
     async getMyCards() {
       try {
-      const token = await getTokenFromUser(this.userInfo);
+        const token = await getTokenFromUser(this.userInfo)
 
         const config = {
           headers: {
@@ -68,32 +67,30 @@ export default {
     },
     async getMyTrades() {
       try {
-    let currentPage = 1;
-    let hasMorePages = true;
-    this.dataTrades.trades = [];
+        let currentPage = 1
+        let hasMorePages = true
+        this.dataTrades.trades = []
 
-    while (hasMorePages) {
-        const response = await this.fetchTrades(9, currentPage);
-        response.data.list.forEach(trade => {
-
+        while (hasMorePages) {
+          const response = await this.fetchTrades(9, currentPage)
+          response.data.list.forEach((trade) => {
             if (trade.userId === this.userInfo.user.id) {
-
-                this.dataTrades.trades.push(trade);
+              this.dataTrades.trades.push(trade)
             }
-        });
+          })
 
-        hasMorePages = response.data.more && response.data.list.length > 0;
-        currentPage++;
-    }
+          hasMorePages = response.data.more && response.data.list.length > 0
+          currentPage++
+        }
 
-    console.log('Todos os trades do usuário:', this.dataTrades.trades);
-} catch (error) {
-    console.error('Ocorreu um erro ao buscar os trades:', error);
-}
-},
+        console.log('Todos os trades do usuário:', this.dataTrades.trades)
+      } catch (error) {
+        console.error('Ocorreu um erro ao buscar os trades:', error)
+      }
+    },
     async fetchTrades(rpp, page) {
-      const response = await apiService.allTrades(rpp, page);
-      return response;
+      const response = await apiService.allTrades(rpp, page)
+      return response
     }
   }
 }

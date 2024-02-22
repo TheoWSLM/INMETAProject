@@ -17,7 +17,7 @@
         Detalhes
       </span>
     </button>
-    <button class="relative w-full md:w-12/12 justify-center mx-auto inline-flex items-center p-0.5 mb-2  overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-amber-600 to-purple-900 group-hover:from-orange-400 group-hover:to-purple-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300">
+    <button v-if="myTrade" @click="deleteTrade()" class="relative w-full md:w-12/12 justify-center mx-auto inline-flex items-center p-0.5 mb-2  overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-amber-600 to-purple-900 group-hover:from-orange-400 group-hover:to-purple-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300">
       <span class="relative w-full px-32 py-2.5 transition-all ease-in duration-150 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
         Excluir
       </span>
@@ -30,6 +30,9 @@
   
   <script>
   import TradeDetailsModal from './TradeDetailsModal.vue'
+  import { mapState } from 'vuex'
+  import apiService from '@/services/apiService'
+  import  {getTokenFromUser} from '@/services/authService' 
   
   export default {
     props: {
@@ -37,10 +40,18 @@
         type: Object,
         required: true
       },
+      myTrade:{
+        type: Boolean,
+        required: false,
+        default:false
+      }
     },
     components: {
       TradeDetailsModal
     },
+    computed: {
+    ...mapState(['userInfo'])
+  },
     data() {
       return {
         showModal: false,
@@ -48,7 +59,23 @@
       }
     },
     methods:{
+      async deleteTrade() {
+    try {
       
+      const token = await getTokenFromUser(this.userInfo)
+
+const config = {
+  headers: {
+    Authorization: token
+  }
+}
+      console.log(this.trade.id);
+      const response = await apiService.removeTrade(this.trade.id, config);
+      console.log(response);
+    } catch (error) {
+      console.error('Error deleting trade:', error);
+    }
+  }
     },
     
   }
