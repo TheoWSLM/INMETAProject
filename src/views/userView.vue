@@ -36,7 +36,7 @@ export default {
       },
       dataTrades: {
         trades: []
-      },
+      }
     }
   },
   async mounted() {
