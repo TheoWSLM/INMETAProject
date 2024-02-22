@@ -1,8 +1,12 @@
 <template>
-  <div class="flex flex-col lg:flex-row lg:w-9/12 mx-auto items-center justify-center"> 
-    <div class="mx-20 flex items-center justify-center"> 
-      <img src="@/assets/cellphoneMockup.png" alt="Celular mostrando o site YuGiCards com elementos decorativos em amarelo" class="h-auto max-w-sm" />
-    </div> 
+  <div class="flex flex-col lg:flex-row lg:w-9/12 mx-auto items-center justify-center">
+    <div class="mx-20 flex items-center justify-center">
+      <img
+        src="@/assets/cellphoneMockup.png"
+        alt="Celular mostrando o site YuGiCards com elementos decorativos em amarelo"
+        class="h-auto max-w-sm"
+      />
+    </div>
     <div class="pr-10">
       <TitleAndDescription
         class="text-start whitespace-pre-line"

@@ -6,13 +6,13 @@
   />
   <TradeListSection :content="data" />
   <div class="my-10">
-      <PaginationButtons
-        :currentPage="currentPage"
-        @next-page="nextPage"
-        @prev-page="prevPage"
-        :nextPageExist="nextPageExist"
-      />
-    </div>
+    <PaginationButtons
+      :currentPage="currentPage"
+      @next-page="nextPage"
+      @prev-page="prevPage"
+      :nextPageExist="nextPageExist"
+    />
+  </div>
 </template>
 
 <script>

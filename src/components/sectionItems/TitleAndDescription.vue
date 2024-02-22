@@ -1,7 +1,7 @@
 <template>
   <div class="py-4 max-w-screen-xl lg:py-8">
     <h1
-      class="mb-2 text-3xl text-start font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-3xl dark:text-white"
+    :class="[textSize, 'mb-2 text-3xl text-start font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-3xl dark:text-white']"
     >
       {{ title }}
     </h1>
@@ -35,6 +35,10 @@ export default {
       required: true
     },
     buttonText: {
+      type: String,
+      default: ''
+    },
+    textSize: {
       type: String,
       default: ''
     }

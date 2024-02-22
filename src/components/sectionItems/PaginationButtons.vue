@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center">
+  <div class="flex justify-around">
     <button
       :disabled="currentPage === 1"
       :class="{ 'opacity-20': currentPage === 1 }"
@@ -27,9 +27,9 @@
         Anterior
       </span>
     </button>
-
-    <h1 class="text-pretty">Página {{ currentPage }}</h1>
-
+<div >
+    <h1 class="text-pretty flex items-center px-2.5 py-2.5">Página {{ currentPage }}</h1>
+  </div>
     <button
       :disabled="!nextPageExist || buttonDisabled"
       :class="{ 'opacity-20': !nextPageExist || buttonDisabled }"
