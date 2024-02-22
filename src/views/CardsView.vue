@@ -10,7 +10,14 @@
       :filterCards="filterCards"
       @update:searchTerm="handleSearchTermUpdate"
     />
-
+    <div class="mb-10">
+      <PaginationButtons
+  :currentPage="currentPage"
+  @next-page="nextPage"
+  @prev-page="prevPage"
+  :nextPageExist="nextPageExist"
+/>
+</div>
     <div class="grid md:grid-cols-4 gap-16">
       <CardList v-for="(card, cardIndex) in afterFilterCards" :key="cardIndex" :cardInfo="card" />
     </div>
@@ -22,12 +29,14 @@ import CardList from '@/components/sections/CardListSection.vue'
 import apiService from '@/services/apiService'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 import SearchFilter from '@/components/sectionItems/SearchFilter.vue'
+import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
 
 export default {
   components: {
     CardList,
     TitleAndDescription,
-    SearchFilter
+    SearchFilter,
+    PaginationButtons
   },
   data() {
     return {
@@ -35,25 +44,29 @@ export default {
         cards: []
       },
       searchTerm: '',
-      afterFilterCards: []
+      afterFilterCards: [],
+      currentPage: 1,
+      totalPages: null,
+      nextPageExist: true,
     }
   },
   created() {
     this.getAllCards()
   },
   methods: {
-    async getAllCards() {
+    async getAllCards(page = 1) {
       try {
-        const response = await this.allCards()
-        console.log(response.data.list)
+        const response = await this.allCards(12, page)
+        this.nextPageExist = response.data.more
+
         this.data = response.data.list
         this.afterFilterCards = this.data
       } catch (error) {
         console.error('Error fetching data:', error)
       }
     },
-    async allCards() {
-      return await apiService.allCards()
+    async allCards(rpp, page) {
+      return await apiService.allCards(rpp, page)
     },
     filterCards() {
       // Filtrar as cartas com base no searchTerm
@@ -68,7 +81,18 @@ export default {
     handleSearchTermUpdate(newSearchTerm) {
       this.searchTerm = newSearchTerm
       this.filterCards()
-    }
+    },
+    async nextPage() {
+    this.currentPage++;
+    await this.getAllCards(this.currentPage);
+  
+
+    
+  },
+  async prevPage() {
+    this.currentPage--;
+    await this.getAllCards(this.currentPage);
+  },
   },
   computed: {
     filteredCards() {
