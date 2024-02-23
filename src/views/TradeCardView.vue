@@ -35,7 +35,7 @@
       @selectCard="cardSelected"
     />
   </div>
-  <LoadingModal v-if="!afterFilterCards.length" />
+  <LoadingModal v-if="!data.length" />
 </template>
 
 <script>
@@ -71,6 +71,12 @@ export default {
       },
       searchTerm: '',
       afterFilterCards: [],
+      beforeFilterCards: {
+        cards: []
+      },
+      userCards:{
+        cards: []
+      },
       cardToTrade: [],
       showModal: false,
       requestBody: null,
@@ -84,7 +90,9 @@ export default {
     }
     this.localCardId = this.$route.params.id
     await this.getAllCards()
-    this.findUserCard()
+    await this.findUserCard()
+    this.beforeFilterCards = this.allCards(150,1)
+
   },
   methods: {
     async getAllCards(page = 1) {
@@ -104,9 +112,13 @@ export default {
       if (!this.searchTerm) {
         this.afterFilterCards = this.data
       } else {
-        this.afterFilterCards = this.data.filter((card) =>
-          card.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        )
+        this.beforeFilterCards.then((response) => {
+      this.afterFilterCards = response.data.list.filter((card) =>
+        card.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }).catch((error) => {
+      console.error('Erro ao obter as cartas:', error);
+    });
       }
     },
     handleSearchTermUpdate(newSearchTerm) {
@@ -116,8 +128,8 @@ export default {
     async findUserCard() {
       let notFound = true
       await this.getMyCards()
-      for (let key in this.data) {
-        const card = this.data[key]
+      for (let key in this.userCards) {
+        const card = this.userCards[key]
         if (card.id === this.localCardId) {
           this.cardToTrade = card
           notFound = false
@@ -189,7 +201,7 @@ export default {
           }
         }
         const response = await apiService.myCards(config)
-        this.data = response.data
+        this.userCards = response.data
       } catch (error) {
         alertService.authError()
       }

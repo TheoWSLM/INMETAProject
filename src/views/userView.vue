@@ -3,7 +3,7 @@
     <MyCards :myCards="data" />
   </div>
 
-  <div class="mb-0">
+  <div class="mb-0 pb-0">
     <TitleAndDescription
       :title="'Suas solicitações de troca'"
       :description="'Gerencie suas solicitações'"

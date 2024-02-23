@@ -48,6 +48,9 @@ export default {
       data: {
         cards: []
       },
+      beforeFilterCards: {
+        cards: []
+      },
       searchTerm: '',
       afterFilterCards: [],
       currentPage: 1,
@@ -56,6 +59,7 @@ export default {
   },
   created() {
     this.getAllCards()
+    this.beforeFilterCards = this.allCards(150,1)
   },
   methods: {
     async getAllCards(page = 1) {
@@ -76,9 +80,13 @@ export default {
       if (!this.searchTerm) {
         this.afterFilterCards = this.data
       } else {
-        this.afterFilterCards = this.data.filter((card) =>
-          card.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        )
+        this.beforeFilterCards.then((response) => {
+      this.afterFilterCards = response.data.list.filter((card) =>
+        card.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }).catch((error) => {
+      console.error('Erro ao obter as cartas:', error);
+    });
       }
     },
     handleSearchTermUpdate(newSearchTerm) {
