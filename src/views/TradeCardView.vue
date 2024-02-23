@@ -136,12 +136,17 @@ export default {
     async cardSelected(cardId) {
 
       if (cardId !== this.localCardId) {
+        
+        const userResponse = await alertService.showAlertWhithConfirmation(`Criar solicitação de troca`,`Você deseja abrir a solicitação de troca para receber a carta selecionada?`,"warning", "Sim","Cancelar")
+        if(!userResponse){
+        return;
+      }
+
     this.buildRequestBody(this.localCardId, cardId);
   } else {
     alertService.sameCardsError();
     return;
   }
-      console.log('Carta selecionada:', cardId) 
       const token = await getTokenFromUser(this.userInfo)
       const config = {
         headers: {
@@ -149,6 +154,8 @@ export default {
         }
       }
       const response = await apiService.criateTrade(this.requestBody, config)
+      alertService.showMessage("success", "Troca", "Solicitação de troca criada com sucesso!")
+      this.$router.push('/user')
       console.log(response)
     },
     buildRequestBody(cardIdOfert, CardIdReceive) {
