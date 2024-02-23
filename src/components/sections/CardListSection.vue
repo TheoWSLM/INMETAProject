@@ -113,11 +113,15 @@ if (!result) {
             Authorization: token
           }
         }
+        if(!this.userInfo){
+          alertService.showMessage("error", "Usuario não logado", "É preciso estar logado no sistema para poder adicionar cartas!");
+          return;  
+        }
         const response = await apiService.addCard(cardId, config)
         alertService.showMessage("success", "Sucesso", "Carta adicionada com sucesso!");
         this.data = response.data.list
       } catch (error) {
-        alertService.authError('Ocorreu um erro','Se certifique de estar logado e verifique sua conexão com a internet');
+        alertService.showMessage("error",'Ocorreu um erro','Se certifique de estar logado e verifique sua conexão com a internet');
       }
     }
   }
