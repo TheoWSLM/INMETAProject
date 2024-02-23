@@ -1,10 +1,10 @@
 <template>
-  <div class="flex justify-around">
+  <div class="flex items-center justify-between ">
     <button
       :disabled="currentPage === 1"
       :class="{ 'opacity-20': currentPage === 1 }"
       @click="prevPage"
-      class="relative mx-8 inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br bg-purple-900 hover:bg-purple-1000 hover:text-white dark:text-white"
+      class="relative items-center overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br bg-purple-900 hover:bg-purple-1000 hover:text-white dark:text-white"
     >
       <span
         class="flex items-center px-2.5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
@@ -28,13 +28,14 @@
       </span>
     </button>
 <div >
-    <h1 class="text-pretty flex items-center px-2.5 py-2.5">Página {{ currentPage }}</h1>
+    <h1 class="text-pretty flex items-center px-2.5 py-2.5 hidden sm:inline">Página</h1>
+    <h1 :class="['text-pretty', 'flex', 'items-center', 'px-2.5', 'py-2.5', 'sm:inline']"> {{ currentPage }}</h1>
   </div>
     <button
       :disabled="!nextPageExist || buttonDisabled"
       :class="{ 'opacity-20': !nextPageExist || buttonDisabled }"
       @click="nextPage"
-      class="relative mx-8 inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br bg-purple-900 hover:bg-purple-1000 hover:text-white dark:text-white"
+      class="relative items-center overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br bg-purple-900 hover:bg-purple-1000 hover:text-white dark:text-white"
     >
       <span
         class="flex items-center px-2.5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"

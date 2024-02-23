@@ -1,11 +1,13 @@
 <template>
-  <div class="flex flex-col md:flex-row mt-14 sm:mt-8 md:items-center ">
+    <div class="sm:mt-4 mt-16">
+  <div class="flex flex-col md:flex-row md:items-center ">
     <TitleAndDescription
-      class="mt-10 mb-0 sm:mb-8"
+      class=" mb-0 sm:mb-8"
       :title="'Solicitações de troca em aberto'"
       :description="'Troque e atualize seu deck!'"
     />
   </div>
+</div>
 
   <div class="py-0 sm:py-8 px-4 mx-auto max-w-screen-xl lg:py-2 flex justify-center">
     <div class="grid md:grid-cols-3 sm:grid-cols-auto gap-8">

@@ -1,8 +1,13 @@
 <template>
+
+<div class="sm:mt-4 mt-16">
+  <div class="flex flex-col md:flex-row md:items-center ">
   <TitleAndDescription
     :title="'Suas cartas'"
     :description="'Aqui estão todas as suas cartas registradas!'"
   />
+  </div>
+</div>
 
   <SearchFilter
     :searchTerm="searchTerm"

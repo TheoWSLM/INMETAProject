@@ -1,11 +1,17 @@
 <template>
+   <div class="sm:mt-4 mt-16">
+  <div class="flex flex-col md:flex-row md:items-center ">
   <TitleAndDescription
     :title="`Trocar carta: ${cardToTrade.name}`"
     :description="'Selecione qual carta quer receber em troca'"
   />
-  <div class="items-center mt-4 mb-10 justify-center mx-auto w-3/12">
-    <CardListSection :cardInfo="cardToTrade" :tradeCard="true" />
   </div>
+   </div>
+
+   <div class="grid grid-cols-1 md:w-3/12 mx-auto mb-24 ">
+    <CardListSection :cardInfo="cardToTrade" :tradeCard="true" />
+    </div>
+
 
   <SearchFilter
     :searchTerm="searchTerm"

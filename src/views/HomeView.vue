@@ -1,5 +1,7 @@
 <template>
+  <div class="sm:mt-4 mt-16">
   <BannerSection />
+  </div>
   <TitleAndDescription
     class="mt-8"
     :title="'Solicitações de troca em aberto'"
