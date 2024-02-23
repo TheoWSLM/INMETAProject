@@ -59,7 +59,7 @@
    
         <button
           data-modal-toggle="authentication"
-          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          class="block w-full text-start px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >Login</button
         >
     <div class="py-1">
@@ -81,6 +81,7 @@ import LoginModal from './LoginModal.vue'
 import { RouterLink } from 'vue-router'
 import IconLogged from "@/assets/IconLogged.png";
 import IconUnlogged from "@/assets/IconUnlogged.png";
+import alertService from '@/services/alertService';
 
 
 export default {
@@ -101,11 +102,13 @@ export default {
     logOff() {
       this.$store.dispatch('logoutUser')
       .then(() => {
-          // Após o logout ser bem-sucedido, recarregue a página
-          window.location.reload();
+        alertService.showMessage("success", "Sair", "Usuário deslogado com sucesso");
+      setTimeout(() => {
+        window.location.reload();;
+      }, 1500);
         })
-        .catch(error => {
-          console.error('Erro ao fazer logout:', error);
+        .catch(()=> {
+          alertService.showMessage("error", "Sair", "Usuario não pode ser deslogado, verifique sua conexão e tente novamente");
         });
     }
   }

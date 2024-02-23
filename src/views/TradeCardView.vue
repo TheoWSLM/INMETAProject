@@ -93,7 +93,6 @@ export default {
       return await apiService.allCards(rpp, page)
     },
     filterCards() {
-      // Filtrar as cartas com base no searchTerm
       if (!this.searchTerm) {
         this.afterFilterCards = this.data
       } else {
@@ -106,10 +105,13 @@ export default {
       this.searchTerm = newSearchTerm
       this.filterCards()
     },
-    findUserCard() {
+    async findUserCard() {
       let notFound = true;
+      await this.getMyCards();
       for (let key in this.data) {
         const card = this.data[key]
+        console.log(card.id)
+        console.log(this.localCardId)
         if (card.id === this.localCardId) {
           this.cardToTrade = card
           notFound = false;
@@ -130,7 +132,7 @@ export default {
     alertService.sameCardsError();
     return;
   }
-      console.log('Carta selecionada:', cardId) //parei aqui
+      console.log('Carta selecionada:', cardId) 
       const token = await getTokenFromUser(this.userInfo)
       const config = {
         headers: {
@@ -161,6 +163,22 @@ export default {
     async prevPage() {
       this.currentPage--
       await this.getAllCards(this.currentPage)
+    },
+    async getMyCards() {
+      try {
+        const token = await getTokenFromUser(this.userInfo)
+
+        const config = {
+          headers: {
+            Authorization: token
+          }
+        }
+        const response = await apiService.myCards(config)
+        this.data = response.data
+        console.log(response.data)
+      } catch (error) {
+        alertService.authError();
+      }
     }
   },
   computed: {

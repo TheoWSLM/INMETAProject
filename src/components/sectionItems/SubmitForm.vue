@@ -47,55 +47,65 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      try {
-        for (const field of this.fields) {
-          const validations = this.fieldValidations[field.id]
-          if (validations) {
-            for (const validation of validations) {
-              if (!this.formData[field.id] || !validation.validator(this.formData[field.id])) {
-                this.errors[field.id] = validation.message
-                break
-              }
-            }
+    this.errors = {};
+
+    for (const field of this.fields) {
+      const validations = this.fieldValidations[field.id];
+      if (validations) {
+        for (const validation of validations) {
+          if (!this.formData[field.id] || !validation.validator(this.formData[field.id])) {
+            this.errors[field.id] = validation.message;
+            break;
           }
         }
-
-        if (Object.keys(this.errors).length === 0) {
-          console.log('Formulário válido, enviando requisição...')
-
-          if (this.endpoint === 'https://cards-marketplace-api.onrender.com/register') {
-        await this.registerRequest()
-      } else if (this.endpoint === 'https://cards-marketplace-api.onrender.com/login') {
-        await this.loginRequest()
       }
+    }
+
+    if (Object.keys(this.errors).length === 0) {
+      await this.sendRequest();
+    }
+},
+
+async sendRequest() {
+    if (this.endpoint === 'https://cards-marketplace-api.onrender.com/register') {
+      await this.registerRequest();
+    } else if (this.endpoint === 'https://cards-marketplace-api.onrender.com/login') {
+      await this.loginRequest();
+    }
+},
+
+async handleInputChange(fieldId) {
+  if (this.errors[fieldId]) {
+    const validations = this.fieldValidations[fieldId];
+    if (validations) {
+      for (const validation of validations) {
+        if (validation.validator(this.formData[fieldId])) {
+          delete this.errors[fieldId];
         }
-      } catch (error) {
-        this.$store.commit('logoutUser')
-        console.error('Error:', error)
       }
-    },
+    }
+  }
+},
 
   async registerRequest() {
     try {
        await apiService.registerUser(this.formData)
-      alertService.success();
+      alertService.showMessage("success", "Registrar", "Usuario registrado com sucesso");
     } catch (error) {
-      alertService.newUserError();
+      alertService.showMessage("error", "Erro ao cadastrar", "Não foi possivel realizar o cadastro, verifique se ja possui uma conta, a conexão com a internet e tente novamente")
 
-      this.errors['registerError'] = 'Ocorreu um erro ao registrar o usuário.'
     }
   },
   async loginRequest() {
     try {
       const response = await apiService.loginUser(this.formData)
       console.log(response);
-      alertService.success();
+      alertService.showMessage("success", "Login", "Usuario logado com sucesso");
       this.$emit('form-submitted');
       this.$store.dispatch('loginUser', this.formData)
     } catch (error) {
-      console.error('Erro ao fazer login:', error)
 
-      alertService.authError();
+      alertService.showMessage("error", "Erro de Autenticação", "Não foi possivel realizar o login, verifique suas credenciais, a conexão com a internet e tente novamente")
     }
   }
 },

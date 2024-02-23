@@ -92,7 +92,12 @@ export default {
     },
 
     async createNewTrade() {
+      const userResponse = await alertService.showAlertWhithConfirmation(`Trocar "${this.cardInfo.name}"?`,`Você tem certeza que deseja abrir solicitação de troca para a carta: "${this.cardInfo.name}"?`,"warning", "Sim","Cancelar")
+      if(!userResponse){
+        return;
+      } else{
       this.$router.push({ name: 'newTradeCard', params: { id: this.cardInfo.id } })
+    }
     },
 
     async addCard() {

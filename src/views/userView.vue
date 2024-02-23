@@ -55,7 +55,7 @@ export default {
   created(){
 
     if (!this.userVerify()) {
-    alertService.authError("Erro de Autenticação", "Usuário não autenticado. Redirecionando para a página de login.")
+    alertService.showMessage("warning", "Erro de Autenticação", "Usuário não autenticado. Redirecionando para a página de login.")
     this.$router.push('/')
   }
 
