@@ -64,6 +64,14 @@ sameCardsError(){
     text: 'Não é possível trocar pela mesma carta'
   
   })
+},
+cardNotFound(){
+  Swal.fire({
+    icon: 'error',
+    title: 'Ocorreu um erro',
+    text: 'Você não possui essa carta para troca'
+  
+  })
 }
 
 

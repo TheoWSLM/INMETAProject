@@ -71,6 +71,9 @@ export default {
     }
   },
   async created() {
+    if(!this.userInfo){
+      alertService.authError();
+    }
     this.localCardId = this.$route.params.id
     await this.getAllCards()
     this.findUserCard()
@@ -104,18 +107,19 @@ export default {
       this.filterCards()
     },
     findUserCard() {
-      let foundCard = null
+      let notFound = true;
       for (let key in this.data) {
         const card = this.data[key]
         if (card.id === this.localCardId) {
           this.cardToTrade = card
+          notFound = false;
           break
-        }
+        } 
+
       }
-      if (foundCard) {
-        console.log('Cartão encontrado:', foundCard)
-      } else {
-        console.log('Nenhum cartão encontrado com o ID:', this.localCardId)
+        if (notFound) {
+        alertService.cardNotFound()
+        this.$router.push('/user')
       }
     },
     async cardSelected(cardId) {
