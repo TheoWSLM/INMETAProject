@@ -79,11 +79,10 @@ const result = await alertService.deleteTrade();
 if (!result) {
       return;
     }
-      const response = await apiService.removeTrade(this.trade.id, config);
-      console.log(response);
+    await apiService.removeTrade(this.trade.id, config);
       this.$emit('delete-trade');
     } catch (error) {
-      console.error('Error deleting trade:', error);
+      alertService.showMessage("error", "Deletar", "Não foi possivel deletar a solicitação de troca, verifique sua conexão e tente novamente");
     }
   }
     },

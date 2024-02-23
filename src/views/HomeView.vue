@@ -31,6 +31,7 @@ import AdvantagesCallToAction from '@/components/sections/AdvantagesCallToAction
 import BannerSection from '@/components/sections/BannerSection.vue'
 import apiService from '@/services/apiService'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
+import alertService from '@/services/alertService'
 
 export default {
   components: {
@@ -56,8 +57,8 @@ export default {
         const response = await this.allTrades()
 
         this.data = response.data.list.slice(0, 6)
-      } catch (error) {
-        console.error('Error fetching data:', error)
+      } catch {
+        alertService.showMessage("error", "Trocas", "não foi possível encontrar nenhuma solicitação de troca registrada no sistema, verifique sua conexão e tente novamnente");
       }
     },
     async allTrades() {

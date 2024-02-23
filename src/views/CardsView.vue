@@ -73,7 +73,6 @@ export default {
       return await apiService.allCards(rpp, page)
     },
     filterCards() {
-      // Filtrar as cartas com base no searchTerm
       if (!this.searchTerm) {
         this.afterFilterCards = this.data
       } else {

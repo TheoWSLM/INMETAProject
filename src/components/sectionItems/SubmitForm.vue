@@ -98,8 +98,7 @@ async handleInputChange(fieldId) {
   },
   async loginRequest() {
     try {
-      const response = await apiService.loginUser(this.formData)
-      console.log(response);
+       await apiService.loginUser(this.formData)
       alertService.showMessage("success", "Login", "Usuario logado com sucesso");
       this.$emit('form-submitted');
       this.$store.dispatch('loginUser', this.formData)

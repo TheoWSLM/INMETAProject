@@ -119,8 +119,6 @@ export default {
       await this.getMyCards();
       for (let key in this.data) {
         const card = this.data[key]
-        console.log(card.id)
-        console.log(this.localCardId)
         if (card.id === this.localCardId) {
           this.cardToTrade = card
           notFound = false;
@@ -153,10 +151,10 @@ export default {
           Authorization: token
         }
       }
-      const response = await apiService.criateTrade(this.requestBody, config)
+      await apiService.criateTrade(this.requestBody, config)
       alertService.showMessage("success", "Troca", "Solicitação de troca criada com sucesso!")
       this.$router.push('/user')
-      console.log(response)
+
     },
     buildRequestBody(cardIdOfert, CardIdReceive) {
       this.requestBody = {
@@ -191,7 +189,6 @@ export default {
         }
         const response = await apiService.myCards(config)
         this.data = response.data
-        console.log(response.data)
       } catch (error) {
         alertService.authError();
       }

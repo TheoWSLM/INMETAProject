@@ -67,7 +67,6 @@ export default {
       try {
         const response = await this.allTrades(9, page)
         this.nextPageExist = response.data.more
-        console.log(this.nextPageExist)
         this.data = response.data.list
       } catch (error) {
         alertService.conectionError();
@@ -78,7 +77,7 @@ export default {
     },
     async nextPage() {
       this.currentPage++
-      console.log(this.currentPage)
+
       await this.getAllTrades(this.currentPage)
     },
     async prevPage() {

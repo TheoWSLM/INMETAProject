@@ -85,7 +85,6 @@ export default {
         const response = await apiService.myCards(config)
 
         this.data = response.data
-        console.log(response.data)
       } catch (error) {
         alertService.authError();
       }
@@ -111,7 +110,6 @@ export default {
           currentPage++
         }
 
-        console.log('Todos os trades do usuário:', this.dataTrades.trades)
       } catch (error) {
         alertService.conectionError();
       }
