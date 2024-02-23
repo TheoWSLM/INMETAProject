@@ -1,17 +1,16 @@
 <template>
-   <div class="sm:mt-4 mt-16">
-  <div class="flex flex-col md:flex-row md:items-center ">
-  <TitleAndDescription
-    :title="`Trocar carta: ${cardToTrade.name}`"
-    :description="'Selecione qual carta quer receber em troca'"
-  />
-  </div>
-   </div>
-
-   <div class="grid grid-cols-1 md:w-3/12 mx-auto mb-24 ">
-    <CardListSection :cardInfo="cardToTrade" :tradeCard="true" />
+  <div class="sm:mt-4 mt-16">
+    <div class="flex flex-col md:flex-row md:items-center">
+      <TitleAndDescription
+        :title="`Trocar carta: ${cardToTrade.name}`"
+        :description="'Selecione qual carta quer receber em troca'"
+      />
     </div>
+  </div>
 
+  <div class="grid grid-cols-1 md:w-3/12 mx-auto mb-24">
+    <CardListSection :cardInfo="cardToTrade" :tradeCard="true" />
+  </div>
 
   <SearchFilter
     :searchTerm="searchTerm"
@@ -36,7 +35,7 @@
       @selectCard="cardSelected"
     />
   </div>
-  <LoadingModal v-if=" !afterFilterCards.length" />
+  <LoadingModal v-if="!afterFilterCards.length" />
 </template>
 
 <script>
@@ -80,8 +79,8 @@ export default {
     }
   },
   async created() {
-    if(!this.userInfo){
-      alertService.authError();
+    if (!this.userInfo) {
+      alertService.authError()
     }
     this.localCardId = this.$route.params.id
     await this.getAllCards()
@@ -115,36 +114,39 @@ export default {
       this.filterCards()
     },
     async findUserCard() {
-      let notFound = true;
-      await this.getMyCards();
+      let notFound = true
+      await this.getMyCards()
       for (let key in this.data) {
         const card = this.data[key]
         if (card.id === this.localCardId) {
           this.cardToTrade = card
-          notFound = false;
+          notFound = false
           break
-        } 
-
+        }
       }
-        if (notFound) {
+      if (notFound) {
         alertService.cardNotFound()
         this.$router.push('/user')
       }
     },
     async cardSelected(cardId) {
-
       if (cardId !== this.localCardId) {
-        
-        const userResponse = await alertService.showAlertWhithConfirmation(`Criar solicitação de troca`,`Você deseja abrir a solicitação de troca para receber a carta selecionada?`,"warning", "Sim","Cancelar")
-        if(!userResponse){
-        return;
-      }
+        const userResponse = await alertService.showAlertWhithConfirmation(
+          `Criar solicitação de troca`,
+          `Você deseja abrir a solicitação de troca para receber a carta selecionada?`,
+          'warning',
+          'Sim',
+          'Cancelar'
+        )
+        if (!userResponse) {
+          return
+        }
 
-    this.buildRequestBody(this.localCardId, cardId);
-  } else {
-    alertService.sameCardsError();
-    return;
-  }
+        this.buildRequestBody(this.localCardId, cardId)
+      } else {
+        alertService.sameCardsError()
+        return
+      }
       const token = await getTokenFromUser(this.userInfo)
       const config = {
         headers: {
@@ -152,9 +154,8 @@ export default {
         }
       }
       await apiService.criateTrade(this.requestBody, config)
-      alertService.showMessage("success", "Troca", "Solicitação de troca criada com sucesso!")
+      alertService.showMessage('success', 'Troca', 'Solicitação de troca criada com sucesso!')
       this.$router.push('/user')
-
     },
     buildRequestBody(cardIdOfert, CardIdReceive) {
       this.requestBody = {
@@ -190,7 +191,7 @@ export default {
         const response = await apiService.myCards(config)
         this.data = response.data
       } catch (error) {
-        alertService.authError();
+        alertService.authError()
       }
     }
   },
@@ -201,7 +202,6 @@ export default {
       )
     },
     ...mapState(['userInfo'])
-  },
-
+  }
 }
 </script>

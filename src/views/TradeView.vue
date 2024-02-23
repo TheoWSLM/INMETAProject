@@ -1,13 +1,13 @@
 <template>
-    <div class="sm:mt-4 mt-16">
-  <div class="flex flex-col md:flex-row md:items-center ">
-    <TitleAndDescription
-      class=" mb-0 sm:mb-8"
-      :title="'Solicitações de troca em aberto'"
-      :description="'Troque e atualize seu deck!'"
-    />
+  <div class="sm:mt-4 mt-16">
+    <div class="flex flex-col md:flex-row md:items-center">
+      <TitleAndDescription
+        class="mb-0 sm:mb-8"
+        :title="'Solicitações de troca em aberto'"
+        :description="'Troque e atualize seu deck!'"
+      />
+    </div>
   </div>
-</div>
 
   <div class="py-0 sm:py-8 px-4 mx-auto max-w-screen-xl lg:py-2 flex justify-center">
     <div class="grid md:grid-cols-3 sm:grid-cols-auto gap-8">
@@ -30,9 +30,8 @@
       :nextPageExist="nextPageExist"
     />
   </div>
-  <LoadingModal v-if=" !data.length" />
+  <LoadingModal v-if="!data.length" />
 </template>
-
 
 <script>
 import apiService from '@/services/apiService'
@@ -69,7 +68,7 @@ export default {
         this.nextPageExist = response.data.more
         this.data = response.data.list
       } catch (error) {
-        alertService.conectionError();
+        alertService.conectionError()
       }
     },
     async allTrades(rpp, page) {

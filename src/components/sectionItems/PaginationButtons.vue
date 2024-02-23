@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between ">
+  <div class="flex items-center justify-between">
     <button
       :disabled="currentPage === 1"
       :class="{ 'opacity-20': currentPage === 1 }"
@@ -27,10 +27,12 @@
         Anterior
       </span>
     </button>
-<div >
-    <h1 class="text-pretty items-center px-2.5 py-2.5 hidden sm:inline">Página</h1>
-    <h1 :class="['text-pretty', 'flex', 'items-center', 'px-2.5', 'py-2.5', 'sm:inline']"> {{ currentPage }}</h1>
-  </div>
+    <div>
+      <h1 class="text-pretty items-center px-2.5 py-2.5 hidden sm:inline">Página</h1>
+      <h1 :class="['text-pretty', 'flex', 'items-center', 'px-2.5', 'py-2.5', 'sm:inline']">
+        {{ currentPage }}
+      </h1>
+    </div>
     <button
       :disabled="!nextPageExist || buttonDisabled"
       :class="{ 'opacity-20': !nextPageExist || buttonDisabled }"

@@ -12,18 +12,16 @@
 
   <div class="py-0 sm:py-8 px-4 mx-auto max-w-screen-xl lg:py-2 flex justify-center">
     <div class="grid md:grid-cols-3 sm:grid-cols-auto gap-8">
-  <TradeFeature
-          v-for="(trade, tradeIndex) in dataTrades.trades"
-          :myTrade="true"
-          :key="tradeIndex"
-          :trade="trade"
-          @delete-trade="getMyTrades"
-        />
-      </div>
-
+      <TradeFeature
+        v-for="(trade, tradeIndex) in dataTrades.trades"
+        :myTrade="true"
+        :key="tradeIndex"
+        :trade="trade"
+        @delete-trade="getMyTrades"
+      />
     </div>
-    <LoadingModal v-if="!dataTrades.length && !data.length" />
-
+  </div>
+  <LoadingModal v-if="!dataTrades.length && !data.length" />
 </template>
 
 <script>
@@ -44,7 +42,7 @@ export default {
     TradeFeature,
     loadingModal,
     LoadingModal
-},
+  },
   computed: {
     ...mapState(['userInfo'])
   },
@@ -58,13 +56,15 @@ export default {
       }
     }
   },
-  created(){
-
+  created() {
     if (!this.userVerify()) {
-    alertService.showMessage("warning", "Erro de Autenticação", "Usuário não autenticado. Redirecionando para a página de login.")
-    this.$router.push('/')
-  }
-
+      alertService.showMessage(
+        'warning',
+        'Erro de Autenticação',
+        'Usuário não autenticado. Redirecionando para a página de login.'
+      )
+      this.$router.push('/')
+    }
   },
   async mounted() {
     await this.getMyCards()
@@ -86,7 +86,7 @@ export default {
 
         this.data = response.data
       } catch (error) {
-        alertService.authError();
+        alertService.authError()
       }
     },
     async myCards() {
@@ -109,27 +109,29 @@ export default {
           hasMorePages = response.data.more && response.data.list.length > 0
           currentPage++
         }
-
       } catch (error) {
-        alertService.conectionError();
+        alertService.conectionError()
       }
     },
     async fetchTrades(rpp, page) {
       const response = await apiService.allTrades(rpp, page)
       return response
     },
-    userVerify(){
+    userVerify() {
       return this.userInfo && this.userInfo.token
     },
-    contentVerify(){
+    contentVerify() {
       if (!this.dataTrades.length && !this.data.length) {
-  alertService.showMessage("info", "Aviso", "Você ainda não possui nenhuma carta registrada e nem solicitações de troca ativas, adicione suas cartas!");
-  setTimeout(() => {
-    this.$router.push('/cards')
-  }, 1500);
-}
+        alertService.showMessage(
+          'info',
+          'Aviso',
+          'Você ainda não possui nenhuma carta registrada e nem solicitações de troca ativas, adicione suas cartas!'
+        )
+        setTimeout(() => {
+          this.$router.push('/cards')
+        }, 1500)
+      }
     }
-
   }
 }
 </script>

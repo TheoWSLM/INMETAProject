@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="sm:mt-4 mt-16">
-    <TitleAndDescription
-      :title="'Cartas disponíveis'"
-      :description="'Aqui estão todas as cartas registradas!'"
-    />
-  </div>
+      <TitleAndDescription
+        :title="'Cartas disponíveis'"
+        :description="'Aqui estão todas as cartas registradas!'"
+      />
+    </div>
     <SearchFilter
       :searchTerm="searchTerm"
       :afterFilterCards="afterFilterCards"
@@ -24,7 +24,7 @@
       />
     </div>
   </div>
-  <LoadingModal v-if=" !data.length" />
+  <LoadingModal v-if="!data.length" />
 </template>
 
 <script>

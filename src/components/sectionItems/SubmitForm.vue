@@ -13,8 +13,7 @@
       />
       <p v-if="errors[field.id]" class="text-red-500">{{ errors[field.id] }}</p>
     </div>
-    <button 
-    
+    <button
       type="submit"
       class="relative inline-flex items-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-900 to-amber-600 group-hover:from-purple-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-300"
     >
@@ -47,66 +46,72 @@ export default {
   },
   methods: {
     async handleSubmit() {
-    this.errors = {};
+      this.errors = {}
 
-    for (const field of this.fields) {
-      const validations = this.fieldValidations[field.id];
-      if (validations) {
-        for (const validation of validations) {
-          if (!this.formData[field.id] || !validation.validator(this.formData[field.id])) {
-            this.errors[field.id] = validation.message;
-            break;
+      for (const field of this.fields) {
+        const validations = this.fieldValidations[field.id]
+        if (validations) {
+          for (const validation of validations) {
+            if (!this.formData[field.id] || !validation.validator(this.formData[field.id])) {
+              this.errors[field.id] = validation.message
+              break
+            }
           }
         }
       }
-    }
 
-    if (Object.keys(this.errors).length === 0) {
-      await this.sendRequest();
-    }
-},
+      if (Object.keys(this.errors).length === 0) {
+        await this.sendRequest()
+      }
+    },
 
-async sendRequest() {
-    if (this.endpoint === 'https://cards-marketplace-api.onrender.com/register') {
-      await this.registerRequest();
-    } else if (this.endpoint === 'https://cards-marketplace-api.onrender.com/login') {
-      await this.loginRequest();
-    }
-},
+    async sendRequest() {
+      if (this.endpoint === 'https://cards-marketplace-api.onrender.com/register') {
+        await this.registerRequest()
+      } else if (this.endpoint === 'https://cards-marketplace-api.onrender.com/login') {
+        await this.loginRequest()
+      }
+    },
 
-async handleInputChange(fieldId) {
-  if (this.errors[fieldId]) {
-    const validations = this.fieldValidations[fieldId];
-    if (validations) {
-      for (const validation of validations) {
-        if (validation.validator(this.formData[fieldId])) {
-          delete this.errors[fieldId];
+    async handleInputChange(fieldId) {
+      if (this.errors[fieldId]) {
+        const validations = this.fieldValidations[fieldId]
+        if (validations) {
+          for (const validation of validations) {
+            if (validation.validator(this.formData[fieldId])) {
+              delete this.errors[fieldId]
+            }
+          }
         }
+      }
+    },
+
+    async registerRequest() {
+      try {
+        await apiService.registerUser(this.formData)
+        alertService.showMessage('success', 'Registrar', 'Usuario registrado com sucesso')
+      } catch (error) {
+        alertService.showMessage(
+          'error',
+          'Erro ao cadastrar',
+          'Não foi possivel realizar o cadastro, verifique se já possui uma conta, a conexão com a internet e tente novamente'
+        )
+      }
+    },
+    async loginRequest() {
+      try {
+        await apiService.loginUser(this.formData)
+        alertService.showMessage('success', 'Login', 'Usuario logado com sucesso')
+        this.$emit('form-submitted')
+        this.$store.dispatch('loginUser', this.formData)
+      } catch (error) {
+        alertService.showMessage(
+          'error',
+          'Erro de Autenticação',
+          'Não foi possivel realizar o login, verifique suas credenciais, a conexão com a internet e tente novamente'
+        )
       }
     }
   }
-},
-
-  async registerRequest() {
-    try {
-       await apiService.registerUser(this.formData)
-      alertService.showMessage("success", "Registrar", "Usuario registrado com sucesso");
-    } catch (error) {
-      alertService.showMessage("error", "Erro ao cadastrar", "Não foi possivel realizar o cadastro, verifique se já possui uma conta, a conexão com a internet e tente novamente")
-
-    }
-  },
-  async loginRequest() {
-    try {
-       await apiService.loginUser(this.formData)
-      alertService.showMessage("success", "Login", "Usuario logado com sucesso");
-      this.$emit('form-submitted');
-      this.$store.dispatch('loginUser', this.formData)
-    } catch (error) {
-
-      alertService.showMessage("error", "Erro de Autenticação", "Não foi possivel realizar o login, verifique suas credenciais, a conexão com a internet e tente novamente")
-    }
-  }
-},
 }
 </script>

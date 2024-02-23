@@ -1,14 +1,14 @@
 <template>
   <div class="flex items-center gap-4">
     <img
-    id="avatarButton"
-    type="button"
-    data-dropdown-toggle="userDropdown"
-    data-dropdown-placement="bottom-start"
-    class="w-16 h-16 rounded-full hover:animate-pulse cursor-pointer"
-    :src="userInfo ? loggedIcon : unloggedIcon"
-    alt="User dropdown"
-  />
+      id="avatarButton"
+      type="button"
+      data-dropdown-toggle="userDropdown"
+      data-dropdown-placement="bottom-start"
+      class="w-16 h-16 rounded-full hover:animate-pulse cursor-pointer"
+      :src="userInfo ? loggedIcon : unloggedIcon"
+      alt="User dropdown"
+    />
 
     <div v-if="userInfo" class="hidden md:block font-medium dark:text-white">
       <div>{{ userInfo.user.name }}</div>
@@ -55,20 +55,20 @@
     </div>
 
     <!-- user desconectado -->
-<div       v-if="!userInfo || !userInfo.user.id" >
-   
-        <button
-          data-modal-toggle="authentication"
-          class="block w-full text-start px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >Login</button
-        >
-    <div class="py-1">
-      <RouterLink
-        to="/register"
-        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-        >Registre-se</RouterLink
+    <div v-if="!userInfo || !userInfo.user.id">
+      <button
+        data-modal-toggle="authentication"
+        class="block w-full text-start px-4 py-2 text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
       >
-    </div>
+        Login
+      </button>
+      <div class="py-1">
+        <RouterLink
+          to="/register"
+          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >Registre-se</RouterLink
+        >
+      </div>
     </div>
   </div>
 
@@ -79,17 +79,16 @@
 import { mapState } from 'vuex'
 import LoginModal from './LoginModal.vue'
 import { RouterLink } from 'vue-router'
-import IconLogged from "@/assets/IconLogged.png";
-import IconUnlogged from "@/assets/IconUnlogged.png";
-import alertService from '@/services/alertService';
-
+import IconLogged from '@/assets/IconLogged.png'
+import IconUnlogged from '@/assets/IconUnlogged.png'
+import alertService from '@/services/alertService'
 
 export default {
   data() {
     return {
       loggedIcon: IconLogged,
       unloggedIcon: IconUnlogged
-    };
+    }
   },
   computed: {
     ...mapState(['userInfo'])
@@ -100,16 +99,21 @@ export default {
   },
   methods: {
     logOff() {
-      this.$store.dispatch('logoutUser')
-      .then(() => {
-        alertService.showMessage("success", "Sair", "Usuário deslogado com sucesso");
-      setTimeout(() => {
-        window.location.reload();;
-      }, 1500);
+      this.$store
+        .dispatch('logoutUser')
+        .then(() => {
+          alertService.showMessage('success', 'Sair', 'Usuário deslogado com sucesso')
+          setTimeout(() => {
+            window.location.reload()
+          }, 1500)
         })
-        .catch(()=> {
-          alertService.showMessage("error", "Sair", "Usuario não pode ser deslogado, verifique sua conexão e tente novamente");
-        });
+        .catch(() => {
+          alertService.showMessage(
+            'error',
+            'Sair',
+            'Usuario não pode ser deslogado, verifique sua conexão e tente novamente'
+          )
+        })
     }
   }
 }
