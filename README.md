@@ -20,7 +20,13 @@ Solicitação de Troca de Cartas: Os usuários podem propor trocas de cartas com
 
 :heavy_check_mark: Faça o registro ou faça login em uma conta existente.<br>
 :heavy_check_mark: Navegue pela plataforma para encontrar as cartas que deseja solicitar ou as trocas propostas por outros usuários.<br>
-:heavy_check_mark: Para solicitar uma carta, utilize a função de Trocar.<br>
+:heavy_check_mark: Para solicitar uma carta, utilize a função de Adicionar.<br>
+
+
+
+https://github.com/TheoWSLM/INMETAProject/assets/130668057/50584c46-cd5f-42a3-aad3-e45291ef2b73
+
+
 
 ## 🌀 Como Rodar o YuGiCards
 
