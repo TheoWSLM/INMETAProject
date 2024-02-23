@@ -68,14 +68,18 @@
     try {
       
       const token = await getTokenFromUser(this.userInfo)
+    
 
 const config = {
   headers: {
     Authorization: token
   }
 }
-      console.log(this.trade.id);
-      alertService.deleteTrade();
+const result = await alertService.deleteTrade();
+console.log("PAssou")
+if (!result) {
+      return;
+    }
       const response = await apiService.removeTrade(this.trade.id, config);
       console.log(response);
       this.$emit('delete-trade');

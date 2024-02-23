@@ -46,6 +46,7 @@ import { getTokenFromUser } from '@/services/authService.js'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 import { mapState } from 'vuex'
 import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
+import alertService from '@/services/alertService'
 
 export default {
   props: {
@@ -118,7 +119,13 @@ export default {
       }
     },
     async cardSelected(cardId) {
-      this.buildRequestBody(this.localCardId, cardId)
+
+      if (cardId !== this.localCardId) {
+    this.buildRequestBody(this.localCardId, cardId);
+  } else {
+    alertService.sameCardsError();
+    return;
+  }
       console.log('Carta selecionada:', cardId) //parei aqui
       const token = await getTokenFromUser(this.userInfo)
       const config = {

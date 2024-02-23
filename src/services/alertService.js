@@ -32,22 +32,39 @@ export default {
     
     })
   },
-  deleteTrade(){
-  Swal.fire({
-    title: "Você tem certeza que deseja excluir essa troca?",
-    text: "Essa ação é irreversível",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#581c87",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Sim"
-  }).then((result) => {
-    if (result.isConfirmed) {
+  async deleteTrade(){
+    return new Promise((resolve) => {
       Swal.fire({
-        title: "",
-        text: "Troca excluída com sucesso",
-        icon: "success"
+        title: "Você tem certeza que deseja excluir essa troca?",
+        text: "Essa ação é irreversível",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#581c87",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim",
+        cancelButtonText: "cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "",
+            text: "Troca excluída com sucesso",
+            icon: "success"
+          });
+          resolve(true);
+        } else {
+          resolve(false);
+        }
       });
-    }
+    });
+},
+sameCardsError(){
+  Swal.fire({
+    icon: 'error',
+    title: 'Ocorreu um erro',
+    text: 'Não é possível trocar pela mesma carta'
+  
   })
-}}
+}
+
+
+}

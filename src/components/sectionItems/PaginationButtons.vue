@@ -28,7 +28,7 @@
       </span>
     </button>
 <div >
-    <h1 class="text-pretty flex items-center px-2.5 py-2.5 hidden sm:inline">Página</h1>
+    <h1 class="text-pretty items-center px-2.5 py-2.5 hidden sm:inline">Página</h1>
     <h1 :class="['text-pretty', 'flex', 'items-center', 'px-2.5', 'py-2.5', 'sm:inline']"> {{ currentPage }}</h1>
   </div>
     <button
