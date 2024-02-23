@@ -1,22 +1,25 @@
 <template>
-  <TitleAndDescription
-    class="mt-10"
-    :title="'Solicitações de troca em aberto'"
-    :description="'Troque e atualize seu deck!'"
-  />
+  <div class="flex flex-col md:flex-row mt-14 sm:mt-8 md:items-center ">
+    <TitleAndDescription
+      class="mt-10 mb-0 sm:mb-8"
+      :title="'Solicitações de troca em aberto'"
+      :description="'Troque e atualize seu deck!'"
+    />
+  </div>
 
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-2">
-      <div class="grid md:grid-cols-3 gap-8">
-        
-  <TradeFeature
-          v-for="(trade, tradeIndex) in data"
-          :myTrade="false"
-          :key="tradeIndex"
-          :trade="trade"
-          @delete-trade="getAllTrades"
-        />
-      </div>
+  <div class="py-0 sm:py-8 px-4 mx-auto max-w-screen-xl lg:py-2 flex justify-center">
+    <div class="grid md:grid-cols-3 sm:grid-cols-auto gap-8">
+      <TradeFeature
+        v-for="(trade, tradeIndex) in data"
+        :myTrade="false"
+        :key="tradeIndex"
+        :trade="trade"
+        @delete-trade="getAllTrades"
+        class="mt-0 sm:mt-0"
+      />
     </div>
+  </div>
+
   <div class="my-10">
     <PaginationButtons
       :currentPage="currentPage"
@@ -26,6 +29,7 @@
     />
   </div>
 </template>
+
 
 <script>
 import apiService from '@/services/apiService'

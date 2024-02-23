@@ -6,8 +6,8 @@
     :description="'Troque e atualize seu deck!'"
     :buttonText="'Ver todas'"
   />
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-2">
-      <div class="grid md:grid-cols-3 gap-8">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-2 flex justify-center">
+  <div class="grid md:grid-cols-3 sm:grid-cols-auto gap-8">
         
   <TradeFeature
           v-for="(trade, tradeIndex) in data"
