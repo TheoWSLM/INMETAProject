@@ -31,11 +31,11 @@ Solicitação de Troca de Cartas: Os usuários podem propor trocas de cartas com
 
 Clone o Repositório:
 <pre>
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/TheoWSLM/INMETAProject.git
 </pre>
 Acesse o Diretório da Aplicação:
 <pre>
-cd seu-repositorio
+cd INMETAProject
 </pre>
 Instale, Compile e Execute:
 <pre>
