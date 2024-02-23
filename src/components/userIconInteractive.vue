@@ -1,25 +1,14 @@
 <template>
   <div class="flex items-center gap-4">
     <img
-      v-if="userInfo"
-      id="avatarButton"
-      type="button"
-      data-dropdown-toggle="userDropdown"
-      data-dropdown-placement="bottom-start"
-      class="w-16 h-16 rounded-full hover:animate-pulse cursor-pointer"
-      src="../assets/IconLogged.png"
-      alt="User dropdown"
-    />
-    <img
-      v-if="!userInfo"
-      id="avatarButton"
-      type="button"
-      data-dropdown-toggle="userDropdown"
-      data-dropdown-placement="bottom-start"
-      class="w-16 h-16 rounded-full hover:animate-pulse cursor-pointer"
-      src="../assets/IconUnlogged.png"
-      alt="User dropdown"
-    />
+    id="avatarButton"
+    type="button"
+    data-dropdown-toggle="userDropdown"
+    data-dropdown-placement="bottom-start"
+    class="w-16 h-16 rounded-full hover:animate-pulse cursor-pointer"
+    :src="userInfo ? loggedIcon : unloggedIcon"
+    alt="User dropdown"
+  />
 
     <div v-if="userInfo" class="hidden md:block font-medium dark:text-white">
       <div>{{ userInfo.user.name }}</div>
@@ -66,26 +55,20 @@
     </div>
 
     <!-- user desconectado -->
-
-    <ul
-      v-if="!userInfo || !userInfo.user.id"
-      class="py-2 text-sm text-gray-800 dark:text-gray-200"
-      aria-labelledby="avatarButton"
-    >
-      <li>
-        <a
+<div       v-if="!userInfo || !userInfo.user.id" >
+   
+        <button
           data-modal-toggle="authentication"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >Login</a
+          >Login</button
         >
-      </li>
-    </ul>
-    <div v-if="!userInfo || !userInfo.user.id" class="py-1">
+    <div class="py-1">
       <RouterLink
         to="/register"
         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
         >Registre-se</RouterLink
       >
+    </div>
     </div>
   </div>
 
@@ -96,7 +79,17 @@
 import { mapState } from 'vuex'
 import LoginModal from './LoginModal.vue'
 import { RouterLink } from 'vue-router'
+import IconLogged from "@/assets/IconLogged.png";
+import IconUnlogged from "@/assets/IconUnlogged.png";
+
+
 export default {
+  data() {
+    return {
+      loggedIcon: IconLogged,
+      unloggedIcon: IconUnlogged
+    };
+  },
   computed: {
     ...mapState(['userInfo'])
   },
@@ -107,6 +100,13 @@ export default {
   methods: {
     logOff() {
       this.$store.dispatch('logoutUser')
+      .then(() => {
+          // Após o logout ser bem-sucedido, recarregue a página
+          window.location.reload();
+        })
+        .catch(error => {
+          console.error('Erro ao fazer logout:', error);
+        });
     }
   }
 }
