@@ -20,7 +20,9 @@
           @delete-trade="getMyTrades"
         />
       </div>
+
     </div>
+    <LoadingModal v-if="!dataTrades.length && !data.length" />
 
 </template>
 
@@ -32,13 +34,17 @@ import apiService from '@/services/apiService'
 import { getTokenFromUser } from '@/services/authService'
 import { mapState } from 'vuex'
 import alertService from '@/services/alertService'
+import loadingModal from '@/components/sectionItems/loadingModal.vue'
+import LoadingModal from '@/components/sectionItems/loadingModal.vue'
 
 export default {
   components: {
     MyCards,
     TitleAndDescription,
-    TradeFeature
-  },
+    TradeFeature,
+    loadingModal,
+    LoadingModal
+},
   computed: {
     ...mapState(['userInfo'])
   },
@@ -63,6 +69,7 @@ export default {
   async mounted() {
     await this.getMyCards()
     await this.getMyTrades()
+    this.contentVerify()
   },
   methods: {
     async getMyCards() {
@@ -115,6 +122,14 @@ export default {
     },
     userVerify(){
       return this.userInfo && this.userInfo.token
+    },
+    contentVerify(){
+      if (!this.dataTrades.length && !this.data.length) {
+  alertService.showMessage("info", "Aviso", "Você ainda não possui nenhuma carta registrada e nem solicitações de troca ativas, adicione suas cartas!");
+  setTimeout(() => {
+    this.$router.push('/cards')
+  }, 1500);
+}
     }
 
   }

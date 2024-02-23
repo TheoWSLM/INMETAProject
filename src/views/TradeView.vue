@@ -30,6 +30,7 @@
       :nextPageExist="nextPageExist"
     />
   </div>
+  <LoadingModal v-if=" !data.length" />
 </template>
 
 
@@ -39,12 +40,14 @@ import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.v
 import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
 import alertService from '@/services/alertService'
 import TradeFeature from '../components/sectionItems/TradeFeature.vue'
+import LoadingModal from '@/components/sectionItems/loadingModal.vue'
 
 export default {
   components: {
     TradeFeature,
     TitleAndDescription,
-    PaginationButtons
+    PaginationButtons,
+    LoadingModal
   },
   data() {
     return {

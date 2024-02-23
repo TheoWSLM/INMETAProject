@@ -24,6 +24,7 @@
       />
     </div>
   </div>
+  <LoadingModal v-if=" !data.length" />
 </template>
 
 <script>
@@ -32,13 +33,15 @@ import apiService from '@/services/apiService'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 import SearchFilter from '@/components/sectionItems/SearchFilter.vue'
 import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
+import LoadingModal from '@/components/sectionItems/loadingModal.vue'
 
 export default {
   components: {
     CardList,
     TitleAndDescription,
     SearchFilter,
-    PaginationButtons
+    PaginationButtons,
+    LoadingModal
   },
   data() {
     return {

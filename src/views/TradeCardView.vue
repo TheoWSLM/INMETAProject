@@ -36,6 +36,7 @@
       @selectCard="cardSelected"
     />
   </div>
+  <LoadingModal v-if=" !afterFilterCards.length" />
 </template>
 
 <script>
@@ -47,8 +48,16 @@ import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.v
 import { mapState } from 'vuex'
 import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
 import alertService from '@/services/alertService'
+import LoadingModal from '@/components/sectionItems/loadingModal.vue'
 
 export default {
+  components: {
+    CardListSection,
+    SearchFilter,
+    TitleAndDescription,
+    PaginationButtons,
+    LoadingModal
+  },
   props: {
     cardId: {
       type: String,
@@ -189,11 +198,6 @@ export default {
     },
     ...mapState(['userInfo'])
   },
-  components: {
-    CardListSection,
-    SearchFilter,
-    TitleAndDescription,
-    PaginationButtons
-  }
+
 }
 </script>
