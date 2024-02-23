@@ -1,38 +1,15 @@
 import '@sweetalert2/theme-dark';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+
 export default {
-    authError() {
-      Swal.fire({
-        icon: 'error',
-        title: 'Ocorreu um erro',
-        text: 'Se certifique de estar logado e verifique sua conexão com a internet'
-      })
-    },
-    conectionError(){
-      Swal.fire({
-      icon: 'error',
-      title: 'Ocorreu um erro',
-      text: 'Se certifique de estar logado e verifique sua conexão com a internet'
-    
-    })
-  },
-  success(){
+  showMessage(icon, title, text) {
     Swal.fire({
-      icon: "success",
-      title: "Your work has been saved",
-      showConfirmButton: false,
-      timer: 1500
+      icon: icon,
+      title: title,
+      text: text
     });
   },
-  newUserError(){
-    Swal.fire({
-      icon: 'error',
-      title: 'Ocorreu um erro',
-      text: 'Não foi possível cadastrar esse usuário, verifique sua conexão e tente novamente'
-    
-    })
-  },
-  async deleteTrade(){
+  async deleteTrade() {
     return new Promise((resolve) => {
       Swal.fire({
         title: "Você tem certeza que deseja excluir essa troca?",
@@ -42,37 +19,41 @@ export default {
         confirmButtonColor: "#581c87",
         cancelButtonColor: "#d33",
         confirmButtonText: "Sim",
-        cancelButtonText: "cancelar"
+        cancelButtonText: "Cancelar"
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire({
-            title: "",
-            text: "Troca excluída com sucesso",
-            icon: "success"
-          });
+          this.showMessage("success", "", "Troca excluída com sucesso");
           resolve(true);
         } else {
           resolve(false);
         }
       });
     });
-},
-sameCardsError(){
-  Swal.fire({
-    icon: 'error',
-    title: 'Ocorreu um erro',
-    text: 'Não é possível trocar pela mesma carta'
-  
-  })
-},
-cardNotFound(){
-  Swal.fire({
-    icon: 'error',
-    title: 'Ocorreu um erro',
-    text: 'Você não possui essa carta para troca'
-  
-  })
-}
-
-
+  },
+  async addCard() {
+    return new Promise((resolve) => {
+      Swal.fire({
+        title: "Você tem certeza que deseja adicionar essa carta?",
+        text: "Essa ação é irreversível",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#581c87",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      });
+    });
+  },
+  sameCardsError() {
+    this.showMessage("error", "Ocorreu um erro", "Não é possível trocar pela mesma carta");
+  },
+  cardNotFound() {
+    this.showMessage("error", "Ocorreu um erro", "Você não possui essa carta para troca");
+  }
 }

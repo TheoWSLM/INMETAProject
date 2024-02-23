@@ -96,6 +96,10 @@ export default {
     },
 
     async addCard() {
+      const result = await alertService.addCard();
+if (!result) {
+      return;
+    }
       try {
         const token = await getTokenFromUser(this.userInfo)
         const cardId = { cardIds: [this.cardInfo.id] }
@@ -105,8 +109,8 @@ export default {
           }
         }
         const response = await apiService.addCard(cardId, config)
+        alertService.showMessage("success", "Sucesso", "Carta adicionada com sucesso!");
         this.data = response.data.list
-        alertService.success();
       } catch (error) {
         alertService.authError('Ocorreu um erro','Se certifique de estar logado e verifique sua conexão com a internet');
       }

@@ -76,7 +76,6 @@ const config = {
   }
 }
 const result = await alertService.deleteTrade();
-console.log("PAssou")
 if (!result) {
       return;
     }
