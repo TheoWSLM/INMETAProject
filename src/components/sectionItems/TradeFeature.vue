@@ -33,6 +33,7 @@
   import { mapState } from 'vuex'
   import apiService from '@/services/apiService'
   import  {getTokenFromUser} from '@/services/authService' 
+  import alertService from '@/services/alertService' 
   
   export default {
     props: {
@@ -70,6 +71,7 @@ const config = {
   }
 }
       console.log(this.trade.id);
+      alertService.deleteTrade();
       const response = await apiService.removeTrade(this.trade.id, config);
       console.log(response);
       this.$emit('delete-trade');

@@ -1,13 +1,13 @@
 <template>
-  <div class="flex justify-between mt-16">
-    <div class="w-5/12 mx-16">
+  <div class="flex flex-col lg:flex-row justify-between mt-16">
+    <div class="lg:w-5/12 lg:mx-16">
       <TitleAndDescription
         title="Comece a trocar suas cartas hoje"
         description="Se registre agora e comece a desfrutar da emoção de trocar cartas de Yu-Gi-Oh com outros entusiastas como você. É fácil, é divertido e é tudo parte da experiência YuGiCards!"
         buttonText=""
       />
     </div>
-    <div class="w-3/12 mt-14 mx-20">
+    <div class="lg:w-5/12 lg:mt-14 lg:mx-20">
       <SubmitForm
         :fields="userRegistrationFields"
         :endpoint="userRegistrationEndpoint"

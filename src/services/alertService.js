@@ -31,5 +31,23 @@ export default {
       text: 'Não foi possível cadastrar esse usuário, verifique sua conexão e tente novamente'
     
     })
-  }
-  }
+  },
+  deleteTrade(){
+  Swal.fire({
+    title: "Você tem certeza que deseja excluir essa troca?",
+    text: "Essa ação é irreversível",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#581c87",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sim"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "",
+        text: "Troca excluída com sucesso",
+        icon: "success"
+      });
+    }
+  })
+}}

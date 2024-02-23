@@ -8,7 +8,7 @@
         seu deck"
         description="Junte-se à comunidade e se torne imbatível!"
         buttonText="Saber mais"
-        :textSize="'text-5xl lg:text-5xl'"
+        :textSize="'text-4xl lg:text-5xl'"
       />
     </div>
 

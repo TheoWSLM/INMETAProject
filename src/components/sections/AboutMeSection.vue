@@ -9,15 +9,15 @@ export default {
 </script>
 
 <template>
-  <div class="flex w-full mt-24 items-center justify-between mx-auto">
-    <div class="w-5/12 mx-auto">
+  <div class="flex w-full mt-24 items-center justify-between mx-auto flex-col lg:flex-row">
+    <div class="lg:w-5/12 mx-auto mb-8 lg:mb-0 lg:order-1">
       <TitleAndDescription
         title="Sobre o Desenvolvedor"
         description=" Aos 23 anos, no último ano de Engenharia Elétrica na UFPB e avançando no curso de Análise e Desenvolvimento de Sistemas, trago uma bagagem de três anos como desenvolvedor Full Stack. Minha motivação vai além do desenvolvimento de soluções; busco oportunidades para fazer a diferença e impactar positivamente o mundo."
         buttonText="Portfólio"
       />
     </div>
-    <div class="relative w-4/12 mx-auto">
+    <div class="relative lg:w-4/12 mx-auto lg:order-2">
       <img
         src="@/assets/theoWeberIcon.png"
         alt="Foto de Theo Weber com fundo laranja"
@@ -31,6 +31,7 @@ export default {
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .animate-spin-slow {
