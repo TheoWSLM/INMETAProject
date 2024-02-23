@@ -1,6 +1,7 @@
-![logoYuGiCards](https://github.com/fm4nds/readme/assets/12631806/a054591c-aa05-494d-992e-451b51b620c9)
+![logoYuGiCards](https://github.com/TheoWSLM/INMETAProject/assets/130668057/59509104-d652-45e3-9b95-9b41efb592c8)
 
 ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
