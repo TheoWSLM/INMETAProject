@@ -4,7 +4,19 @@
     :title="'Solicitações de troca em aberto'"
     :description="'Troque e atualize seu deck!'"
   />
-  <TradeListSection :content="data" />
+
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-2">
+      <div class="grid md:grid-cols-3 gap-8">
+        
+  <TradeFeature
+          v-for="(trade, tradeIndex) in data"
+          :myTrade="false"
+          :key="tradeIndex"
+          :trade="trade"
+          @delete-trade="getAllTrades"
+        />
+      </div>
+    </div>
   <div class="my-10">
     <PaginationButtons
       :currentPage="currentPage"
@@ -16,15 +28,15 @@
 </template>
 
 <script>
-import TradeListSection from '@/components/sections/TradeListSection.vue'
 import apiService from '@/services/apiService'
 import TitleAndDescription from '@/components/sectionItems/TitleAndDescription.vue'
 import PaginationButtons from '@/components/sectionItems/PaginationButtons.vue'
 import alertService from '@/services/alertService'
+import TradeFeature from '../components/sectionItems/TradeFeature.vue'
 
 export default {
   components: {
-    TradeListSection,
+    TradeFeature,
     TitleAndDescription,
     PaginationButtons
   },

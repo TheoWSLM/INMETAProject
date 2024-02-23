@@ -1,4 +1,5 @@
 <template>
+   <div>
     <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 md:p-4">
     <div class="flex flex-col md:flex-row items-center justify-center">
       <img :src="trade.tradeCards && trade.tradeCards[0].card.imageUrl" alt="Banner" class="w-5/12 h-auto mb-4 mx-auto transition-transform duration-300 transform hover:scale-125">
@@ -25,7 +26,7 @@
   </div>
 
     <TradeDetailsModal  v-if="showModal" :trade="trade" :showModal="showModal" @close="showModal = false"   />
-
+  </div>
   </template>
   
   <script>
