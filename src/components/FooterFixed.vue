@@ -10,7 +10,7 @@
         >
           <li>
             <RouterLink to="/how-it-works" class="hover:underline me-4 md:me-6"
-              >Como funciona?</RouterLink
+              >Como funciona</RouterLink
             >
           </li>
           <li>

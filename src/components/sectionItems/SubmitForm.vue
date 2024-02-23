@@ -92,7 +92,7 @@ async handleInputChange(fieldId) {
        await apiService.registerUser(this.formData)
       alertService.showMessage("success", "Registrar", "Usuario registrado com sucesso");
     } catch (error) {
-      alertService.showMessage("error", "Erro ao cadastrar", "Não foi possivel realizar o cadastro, verifique se ja possui uma conta, a conexão com a internet e tente novamente")
+      alertService.showMessage("error", "Erro ao cadastrar", "Não foi possivel realizar o cadastro, verifique se já possui uma conta, a conexão com a internet e tente novamente")
 
     }
   },

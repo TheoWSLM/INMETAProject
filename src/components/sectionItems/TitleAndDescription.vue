@@ -49,7 +49,7 @@ export default {
   methods: {
     buttonClick() {
       if (this.buttonText === 'Saber mais') {
-        this.$router.push('/about');
+        this.$router.push('/how-it-works');
       } else if(this.buttonText === 'Ver todas'){
         this.$router.push('/trades');
       } else if (this.buttonText === 'Portfólio') {
