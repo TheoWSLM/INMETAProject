@@ -1,5 +1,5 @@
 <template>
-  <div class="py-4 max-w-screen-xl lg:py-8">
+  <div class="pt-4 max-w-screen-xl lg:pt-8">
     <h1
       :class="[
         textSize,
