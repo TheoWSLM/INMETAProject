@@ -4,7 +4,7 @@
     data-modal-backdrop="static"
     tabindex="-1"
     aria-hidden="true"
-    class="overflow-y-auto fixed flex z-50 justify-center  items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    class="overflow-y-auto fixed flex z-50 justify-center items-center w-full inset-0 md:h-screen max-h-full"
   >
     <div class="relative p-4 w-full max-w-2xl max-h-full">
       <!-- Modal content -->

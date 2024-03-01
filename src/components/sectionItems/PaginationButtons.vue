@@ -76,18 +76,9 @@ export default {
       default: true
     }
   },
-  data() {
-    return {
-      buttonDisabled: false
-    }
-  },
   methods: {
     nextPage() {
-      this.buttonDisabled = true
       this.$emit('next-page')
-      setTimeout(() => {
-        this.buttonDisabled = false
-      }, 1000)
     },
     prevPage() {
       this.$emit('prev-page')

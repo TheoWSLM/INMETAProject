@@ -48,9 +48,6 @@ export default {
       data: {
         cards: []
       },
-      beforeFilterCards: {
-        cards: []
-      },
       searchTerm: '',
       afterFilterCards: [],
       currentPage: 1,
@@ -59,16 +56,13 @@ export default {
   },
   created() {
     this.getAllCards()
-    this.beforeFilterCards = this.allCards(150,1)
   },
   methods: {
     async getAllCards(page = 1) {
       try {
-        const response = await this.allCards(12, page)
-        this.nextPageExist = response.data.more
-
+        const response = await this.allCards(300, page)
         this.data = response.data.list
-        this.afterFilterCards = this.data
+        this.afterFilterCards = this.data.slice(0, 12);
       } catch (error) {
         console.error('Error fetching data:', error)
       }
@@ -78,29 +72,38 @@ export default {
     },
     filterCards() {
       if (!this.searchTerm) {
-        this.afterFilterCards = this.data
+        this.afterFilterCards = this.data.slice((this.currentPage-1)*12, this.currentPage*12);
       } else {
-        this.beforeFilterCards.then((response) => {
-      this.afterFilterCards = response.data.list.filter((card) =>
+
+      this.afterFilterCards = this.data.filter((card) =>
         card.name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
-    }).catch((error) => {
-      console.error('Erro ao obter as cartas:', error);
-    });
       }
     },
     handleSearchTermUpdate(newSearchTerm) {
       this.searchTerm = newSearchTerm
       this.filterCards()
     },
-    async nextPage() {
-      this.currentPage++
-      await this.getAllCards(this.currentPage)
-    },
-    async prevPage() {
-      this.currentPage--
-      await this.getAllCards(this.currentPage)
+    async updatePage() {
+    if (this.currentPage >= 1 && this.currentPage <= Math.ceil(this.data.length / 12)) {
+        const start = (this.currentPage - 1) * 12;
+        const end = this.currentPage * 12;
+        this.afterFilterCards = this.data.slice(start, end);
+        this.nextPageExist = this.data.length > end;
+    } else {
+        this.nextPageExist = false;
     }
+},
+
+async nextPage() {
+    this.currentPage++;
+    await this.updatePage();
+},
+
+async prevPage() {
+    this.currentPage--;
+    await this.updatePage();
+}
   },
   computed: {
     filteredCards() {
